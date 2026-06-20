@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tab Memory Manager — Privacy Policy</title>
+<link rel="icon" href="img/icon.png" />
+<style>
+  :root{--bg:#fff;--fg:#0f172a;--muted:#64748b;--bd:#e3e7ee;--accent:#10b981}
+  @media (prefers-color-scheme: dark){:root{--bg:#0a0e17;--fg:#eef1f6;--muted:#8b93a3;--bd:#232a3d}}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .crumb{background:color-mix(in srgb,var(--accent) 8%,transparent);border-bottom:1px solid var(--bd)}
+  .crumb .inner{max-width:760px;margin:0 auto;padding:0 22px;display:flex;align-items:center;height:34px;font-size:13px;color:var(--muted);gap:6px}
+  .crumb a{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--fg);text-decoration:none}
+  .crumb a:hover{color:var(--accent)}
+  .crumb img{width:16px;height:16px;border-radius:5px}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  a{color:var(--accent)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:8px;text-decoration:none;color:inherit}
+  .brand img{width:26px;height:26px;border-radius:7px}
+  h1{font-size:30px;margin:14px 0 4px}
+  .date{color:var(--muted);margin:0 0 28px}
+  h2{font-size:18px;margin:28px 0 8px}
+  ul{padding-left:20px}
+  code{background:color-mix(in srgb,var(--accent) 12%,transparent);padding:2px 5px;border-radius:5px;font-size:13.5px}
+  .muted{color:var(--muted)}
+  hr{border:0;border-top:1px solid var(--bd);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="crumb"><div class="inner"><a href="../index.html"><img src="../assets/img/tapdot-icon-256.png" alt="">tapdot</a><span>/ Tab Memory Manager</span></div></div>
+<div class="wrap">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="">Tab Memory Manager</a>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: 13 June 2026</p>
+
+  <p>Tab Memory Manager is built to be private by design. This policy explains what the extension
+  does and does not do with your information.</p>
+
+  <h2>The short version</h2>
+  <p><strong>Tab Memory Manager does not collect, transmit, sell, or share any of your data.</strong>
+  Everything the extension does happens locally, inside your own browser. There are no servers,
+  no accounts, no analytics, and no tracking.</p>
+
+  <h2>What the extension accesses</h2>
+  <p>To do its job, the extension reads information about your <strong>currently open tabs</strong> —
+  their titles, URLs, favicons, audio/pinned/discarded state, and last-active times. It also reads
+  your device's total and available system memory. This information is used only to:</p>
+  <ul>
+    <li>estimate and display how much memory each tab and Chrome are using;</li>
+    <li>group tabs by website;</li>
+    <li>detect duplicate tabs;</li>
+    <li>suggest idle tabs you may want to hibernate or close;</li>
+    <li>show site icons in the list.</li>
+  </ul>
+
+  <h2>What is stored, and where</h2>
+  <p>The extension saves the following <strong>locally on your device only</strong>, using Chrome's
+  <code>storage</code> API:</p>
+  <ul>
+    <li>your settings (e.g. cleanup thresholds, whitelisted domains, options);</li>
+    <li>short-lived per-tab activity timestamps;</li>
+    <li>a short "Recently cleaned" list so you can undo a cleanup;</li>
+    <li>aggregate lifetime stats (tabs cleaned, estimated memory freed).</li>
+  </ul>
+  <p>This data never leaves your browser. It is not sent anywhere, and it is not accessible to us
+  or any third party.</p>
+
+  <h2>What is NOT collected</h2>
+  <ul>
+    <li>No personal information.</li>
+    <li>No browsing history beyond the tabs currently open in your browser.</li>
+    <li>No data is sent to any external server.</li>
+    <li>No advertising or analytics identifiers.</li>
+  </ul>
+
+  <h2>Optional permissions</h2>
+  <ul>
+    <li><strong>Floating widget (host access):</strong> if you enable the on-page memory widget, the
+      extension is granted access to display a small overlay on pages. It does not read or transmit
+      page content.</li>
+    <li><strong>Exact memory (<code>processes</code>, Chrome Dev/Canary only):</strong> if you enable
+      this, the extension reads real per-tab memory from Chrome's local process API. This data is used
+      only for on-screen display and never leaves your device.</li>
+  </ul>
+  <p>Both are off by default and requested only when you turn them on.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the "Last updated" date above will be revised.</p>
+
+  <hr>
+  <p class="muted">Questions about privacy? Email <a href="mailto:rkmohanchn@gmail.com">rkmohanchn@gmail.com</a>.</p>
+</div>
+</body>
+</html>
