@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Margin — Bite-Sized News in Your Browser Side Panel</title>
-<meta name="description" content="Margin puts the day's news in your browser side panel as a swipeable stack of short cards. 25 curated topics, on-device AI summaries, five themes, always private. Coming soon to the Chrome Web Store." />
+<meta name="description" content="Margin puts the day's news in your browser side panel as a swipeable stack of short cards. 25 curated topics, on-device AI summaries, five themes, always private. Free on the Chrome Web Store." />
 <link rel="icon" href="img/icon.png" />
 <meta property="og:title" content="Margin — Bite-sized news in your side panel" />
 <meta property="og:description" content="One story at a time, InShorts-style, right in your browser side panel." />
@@ -28,7 +28,6 @@
   .btn.primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff}
   .btn.primary:hover{filter:brightness(1.07)}
   .btn.ghost{background:transparent;border:1px solid var(--bd);color:var(--fg)}
-  .btn[disabled]{opacity:.5;cursor:default}
 
   .crumb{background:color-mix(in srgb,var(--accent) 8%,transparent);border-bottom:1px solid var(--bd)}
   .crumb .wrap{display:flex;align-items:center;height:34px;font-size:13px;color:var(--muted);gap:6px}
@@ -45,8 +44,6 @@
   .nav-links a.minor{color:var(--muted);font-weight:500}
   .nav-links a.minor:hover{color:var(--fg)}
   @media(max-width:640px){.nav-links a.minor{display:none}}
-  .soon-pill{font-size:12px;font-weight:700;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);
-    border:1px solid color-mix(in srgb,var(--accent) 32%,transparent);padding:5px 11px;border-radius:999px}
 
   .hero{position:relative;overflow:hidden}
   .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:72px 0 64px}
@@ -90,10 +87,6 @@
   .privacy .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px}
 
-  .waitlist{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:48px;text-align:center}
-  .waitlist h2{font-size:28px;margin:0 0 10px}
-  .waitlist p{color:var(--muted);max-width:540px;margin:0 auto 22px}
-
   footer{border-top:1px solid var(--bd);padding:30px 0;color:var(--muted);font-size:14px}
   .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .foot a{color:var(--muted)}.foot a:hover{color:var(--fg)}
@@ -107,7 +100,7 @@
     <nav class="nav-links">
       <a class="minor" href="#features">Features</a>
       <a class="minor" href="#privacy">Privacy</a>
-      <span class="soon-pill">Coming soon</span>
+      <a class="btn primary" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome</a>
     </nav>
   </div>
 </header>
@@ -119,10 +112,10 @@
         <h1>Your day's news,<br>one card at a time.</h1>
         <p class="lede">Margin puts bite-sized news cards from the topics you choose right in your browser side panel — InShorts-style, with on-device AI summaries and always a tap from the full article.</p>
         <div class="cta">
-          <a class="btn primary" href="#waitlist">Get notified at launch</a>
+          <a class="btn primary" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome — Free</a>
           <a class="btn ghost" href="#features">See features</a>
         </div>
-        <p class="tiny"><b>No account.</b> No tracking. No ads. Launching soon on the Chrome Web Store.</p>
+        <p class="tiny"><b>No account.</b> No tracking. No ads.</p>
       </div>
       <div class="stage">
         <img src="img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" />
@@ -159,21 +152,14 @@
       </div>
     </div>
   </section>
-
-  <section id="waitlist" class="wrap">
-    <div class="waitlist">
-      <h2>Be the first to know</h2>
-      <p>Margin is in final testing before its Chrome Web Store launch. Drop a note and we'll email you the moment it's live.</p>
-      <a class="btn primary" href="mailto:rkmohanchn@gmail.com?subject=Notify%20me%20about%20Margin">Notify me at launch</a>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap foot">
     <span>© Margin &nbsp;·&nbsp; a <a href="../index.html">tapdot</a> tool</span>
     <span>
-      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Chrome Web Store</a>
+      &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
       &nbsp;·&nbsp; <a href="mailto:rkmohanchn@gmail.com">Contact</a>
     </span>
   </div>
