@@ -11,170 +11,387 @@
 <meta property="og:image" content="assets/img/tapdot-banner.png" />
 <meta name="theme-color" content="#5b6cf0" />
 <style>
-  :root{
-    --bg:#ffffff;--fg:#13131a;--muted:#666670;--card:#f5f6f8;--card2:#ffffff;--bd:#e7e8ee;
-    --accent:#5b6cf0;--accent2:#8a6cf0;--shadow:0 20px 52px rgba(76,60,170,.11);
+/* ─── Reset & tokens ─────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --fg: #13131a;
+  --muted: #6b6b77;
+  --card: #f5f6f8;
+  --card2: #ffffff;
+  --bd: #e7e8ee;
+  --accent: #5b6cf0;
+  --accent2: #8a6cf0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-md: 0 8px 28px rgba(76,60,170,.12);
+  --shadow-lg: 0 24px 64px rgba(76,60,170,.14);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c0d12;
+    --fg: #eeeef2;
+    --muted: #9c9ca8;
+    --card: #14151c;
+    --card2: #181921;
+    --bd: #262733;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
+    --shadow-md: 0 8px 28px rgba(0,0,0,.35);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
   }
-  @media(prefers-color-scheme:dark){
-    :root{--bg:#0c0d12;--fg:#eeeef2;--muted:#9c9ca8;--card:#15161d;--card2:#181922;--bd:#262733;--shadow:0 20px 52px rgba(0,0,0,.4);}
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  .grad-text{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:12px;
-    padding:13px 22px;cursor:pointer;border:0;font-size:15px;white-space:nowrap;transition:filter .15s,transform .15s,box-shadow .15s}
-  .btn.primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 22px rgba(91,108,240,.3)}
-  .btn.primary:hover{filter:brightness(1.07);box-shadow:0 12px 28px rgba(91,108,240,.4);transform:translateY(-1px)}
-  .btn.ghost{background:transparent;border:1.5px solid var(--bd);color:var(--fg)}
-  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .btn.sm{padding:9px 16px;font-size:13.5px;border-radius:10px}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+.grad-text {
+  background: linear-gradient(120deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 
-  /* ── Header ── */
-  header{position:sticky;top:0;z-index:20;backdrop-filter:saturate(180%) blur(16px);
-    background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--bd)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em;font-size:19px}
-  .brand img{width:30px;height:30px;border-radius:9px;display:block}
-  .nav-links{display:flex;align-items:center;gap:28px}
-  .nav-links a.minor{color:var(--muted);font-weight:600;font-size:14.5px;transition:color .15s}
-  .nav-links a.minor:hover{color:var(--fg)}
-  @media(max-width:680px){.nav-links a.minor{display:none}}
+/* ─── Buttons ────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 15px; white-space: nowrap;
+  border-radius: 14px; padding: 14px 24px;
+  cursor: pointer; border: 0;
+  transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .15s;
+}
+.btn.primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent2));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(91,108,240,.35);
+}
+.btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(91,108,240,.45); }
+.btn.ghost {
+  background: transparent;
+  border: 1.5px solid var(--bd);
+  color: var(--fg);
+}
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn.sm { padding: 10px 18px; font-size: 13.5px; border-radius: 10px; }
+.btn.white { background: #fff; color: var(--accent); font-weight: 700; }
+.btn.white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.14); }
 
-  /* ── Hero ── */
-  .hero{position:relative;overflow:hidden;padding:96px 0 48px}
-  .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    background:
-      radial-gradient(ellipse 65% 55% at 18% 8%,color-mix(in srgb,var(--accent) 17%,transparent),transparent),
-      radial-gradient(ellipse 55% 50% at 88% 4%,color-mix(in srgb,var(--accent2) 14%,transparent),transparent);}
-  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.025em;
-    color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);
-    border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);
-    padding:6px 14px;border-radius:999px;margin-bottom:24px}
-  .kicker svg{width:14px;height:14px}
-  h1{font-size:56px;line-height:1.04;letter-spacing:-.028em;margin:0 0 20px;max-width:800px}
-  @media(max-width:760px){h1{font-size:38px}}
-  @media(max-width:440px){h1{font-size:30px}}
-  .lede{font-size:18px;color:var(--muted);margin:0 0 32px;max-width:520px;line-height:1.72}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+/* ─── Scroll reveal ──────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+}
+[data-reveal="up"]    { transform: translateY(40px); }
+[data-reveal="left"]  { transform: translateX(-40px); }
+[data-reveal="right"] { transform: translateX(40px); }
+[data-reveal="scale"] { transform: scale(.95) translateY(24px); }
+[data-reveal].visible {
+  opacity: 1;
+  transform: none;
+}
+[data-delay="1"] { transition-delay: .12s !important; }
+[data-delay="2"] { transition-delay: .24s !important; }
+[data-delay="3"] { transition-delay: .36s !important; }
+[data-delay="4"] { transition-delay: .48s !important; }
 
-  /* ── Orbit ── */
-  .orbit-wrap{position:relative;max-width:1120px;margin:44px auto 0;height:290px}
-  @media(max-width:760px){.orbit-wrap{height:230px}}
-  .orbit-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:24px;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 20px 48px rgba(91,108,240,.38);
-    display:flex;align-items:center;justify-content:center;z-index:3}
-  .orbit-core img{width:48px;height:48px}
-  .orbit-ring{position:absolute;left:50%;top:50%;border:1.5px dashed color-mix(in srgb,var(--accent) 28%,transparent);
-    border-radius:50%;transform:translate(-50%,-50%)}
-  .orbit-ring.r1{width:218px;height:218px}
-  .orbit-ring.r2{width:374px;height:374px}
-  @media(max-width:760px){.orbit-ring.r1{width:168px;height:168px}.orbit-ring.r2{width:286px;height:286px}}
-  .sat{position:absolute;left:50%;top:50%;margin:-26px;width:52px;height:52px;border-radius:14px;
-    background:var(--card2);border:1px solid var(--bd);
-    box-shadow:0 8px 24px rgba(0,0,0,.09);display:flex;align-items:center;justify-content:center;
-    animation:orbit linear infinite}
-  .sat img{width:32px;height:32px;border-radius:9px}
-  .sat.s1{animation-duration:28s;--r:109px}
-  .sat.s2{animation-duration:38s;animation-direction:reverse;--r:187px}
-  .sat.s3{animation-duration:38s;animation-direction:reverse;--r:187px;animation-delay:-19s}
-  .sat.s4{animation-duration:28s;--r:109px;animation-delay:-14s}
-  @keyframes orbit{
-    from{transform:rotate(0deg) translateX(var(--r)) rotate(0deg)}
-    to{transform:rotate(360deg) translateX(var(--r)) rotate(-360deg)}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .sat{animation:none}
-    .sat.s1{transform:rotate(0deg) translateX(109px) rotate(0deg)}
-    .sat.s4{transform:rotate(180deg) translateX(109px) rotate(-180deg)}
-    .sat.s2{transform:rotate(90deg) translateX(187px) rotate(-90deg)}
-    .sat.s3{transform:rotate(270deg) translateX(187px) rotate(-270deg)}
-  }
+/* ─── Header ─────────────────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 40;
+  backdrop-filter: saturate(180%) blur(18px);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--bd);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.01em; }
+.brand img { width: 32px; height: 32px; border-radius: 10px; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a.minor {
+  color: var(--muted); font-weight: 600; font-size: 14.5px;
+  transition: color .15s;
+}
+.nav-links a.minor:hover { color: var(--fg); }
+@media (max-width: 680px) { .nav-links a.minor { display: none; } }
 
-  /* ── Trust strip ── */
-  .trust{display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:center;padding:22px 0;
-    border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);color:var(--muted);font-size:14px}
-  .trust b{color:var(--fg)}
+/* ─── Hero ───────────────────────────────────────── */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 112px 0 0;
+  min-height: 92vh;
+  display: flex; flex-direction: column;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% -10%, color-mix(in srgb,var(--accent) 18%, transparent), transparent),
+    radial-gradient(ellipse 60% 50% at 85% -5%,  color-mix(in srgb,var(--accent2) 14%, transparent), transparent);
+}
+.hero-text {
+  position: relative; z-index: 1;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  padding-bottom: 80px;
+}
+.kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: .03em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  padding: 6px 14px; border-radius: 999px;
+  margin-bottom: 28px;
+}
+.kicker svg { width: 13px; height: 13px; }
+h1 {
+  font-size: clamp(36px, 5.5vw, 62px);
+  line-height: 1.04; letter-spacing: -.03em; font-weight: 800;
+  margin-bottom: 22px; max-width: 820px;
+}
+.lede {
+  font-size: 18px; color: var(--muted); line-height: 1.75;
+  max-width: 520px; margin-bottom: 36px;
+}
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-  section{padding:84px 0}
-  .h2{font-size:34px;letter-spacing:-.018em;margin:0 0 10px;text-align:center;font-weight:800}
-  .sub{color:var(--muted);text-align:center;max-width:560px;margin:0 auto 52px;font-size:16.5px;line-height:1.65}
+/* ─── Orbit ──────────────────────────────────────── */
+.orbit-section {
+  position: relative; z-index: 1;
+  flex: 1;
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+.orbit-wrap {
+  position: relative;
+  width: 100%; max-width: 700px;
+  height: 360px;
+}
+.orbit-core {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px; height: 90px; border-radius: 26px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 20px 50px rgba(91,108,240,.42);
+  display: flex; align-items: center; justify-content: center; z-index: 3;
+}
+.orbit-core img { width: 50px; height: 50px; }
+.orbit-ring {
+  position: absolute; left: 50%; top: 50%;
+  border: 1.5px dashed color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 50%; transform: translate(-50%, -50%);
+}
+.orbit-ring.r1 { width: 200px; height: 200px; }
+.orbit-ring.r2 { width: 340px; height: 340px; }
+.sat {
+  position: absolute; left: 50%; top: 50%;
+  margin: -27px; width: 54px; height: 54px; border-radius: 16px;
+  background: var(--card2); border: 1px solid var(--bd);
+  box-shadow: var(--shadow-md);
+  display: flex; align-items: center; justify-content: center;
+  animation: orbit-spin linear infinite;
+}
+.sat img { width: 34px; height: 34px; border-radius: 10px; }
+.sat.s1 { animation-duration: 28s;  }
+.sat.s2 { animation-duration: 38s; animation-direction: reverse; }
+.sat.s3 { animation-duration: 38s; animation-direction: reverse; animation-delay: -19s; }
+.sat.s4 { animation-duration: 28s; animation-delay: -14s; }
+@keyframes orbit-spin {
+  from { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sat { animation: none; }
+  .sat.s1 { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
+  .sat.s4 { transform: rotate(180deg) translateX(var(--r)) rotate(-180deg); }
+  .sat.s2 { transform: rotate(90deg)  translateX(var(--r)) rotate(-90deg); }
+  .sat.s3 { transform: rotate(270deg) translateX(var(--r)) rotate(-270deg); }
+}
+@media (max-width: 640px) {
+  .orbit-wrap { height: 280px; }
+  .orbit-ring.r1 { width: 154px; height: 154px; }
+  .orbit-ring.r2 { width: 262px; height: 262px; }
+}
 
-  /* ── Product cards 2×2 ── */
-  .products{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-  @media(max-width:760px){.products{grid-template-columns:1fr}}
+/* ─── Trust strip ────────────────────────────────── */
+.trust {
+  display: flex; flex-wrap: wrap; gap: 8px 32px;
+  justify-content: center; align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
+  color: var(--muted); font-size: 14px;
+}
+.trust b { color: var(--fg); }
 
-  .pcard{background:var(--card2);border:1px solid var(--bd);border-radius:22px;
-    display:flex;flex-direction:column;overflow:hidden;
-    transition:transform .22s ease,box-shadow .22s ease}
-  .pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+/* ─── Sections ───────────────────────────────────── */
+.section { padding: 100px 0; }
+.section-sm { padding: 72px 0; }
+.section-label {
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+  padding: 5px 12px; border-radius: 999px; margin-bottom: 16px;
+}
+.section-heading {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800; letter-spacing: -.02em;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 17px; color: var(--muted); line-height: 1.7;
+  max-width: 540px; margin: 0 auto;
+}
+.section-header { text-align: center; margin-bottom: 64px; }
 
-  .pcard-media{aspect-ratio:16/9;overflow:hidden;background:var(--card);flex-shrink:0}
-  .pcard-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
-  .pcard:hover .pcard-media img{transform:scale(1.03)}
-  .pcard-media.gradient{background:linear-gradient(135deg,#6d28d9,#a855f7);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px}
-  .ciq-icon{width:64px;height:64px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.28)}
-  .ciq-label{color:#fff;font-size:14px;font-weight:700;letter-spacing:-.01em}
-  .ciq-sub{color:rgba(255,255,255,.65);font-size:12.5px}
+/* ─── Product cards ──────────────────────────────── */
+.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+@media (max-width: 760px) { .products { grid-template-columns: 1fr; } }
 
-  .pcard-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
-  .pcard-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-  .pcard-icon{width:46px;height:46px;border-radius:13px;display:block;flex-shrink:0;border:1px solid var(--bd)}
-  .badge{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap;letter-spacing:.01em}
-  .badge.live{background:color-mix(in srgb,#22c55e 13%,transparent);color:#16a34a;border:1px solid color-mix(in srgb,#22c55e 30%,transparent)}
-  .badge.soon{background:color-mix(in srgb,var(--accent2) 12%,transparent);color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 28%,transparent)}
-  .pcard h3{margin:0 0 4px;font-size:20px;letter-spacing:-.015em;font-weight:800}
-  .pcard .tag{margin:0 0 10px;font-size:13.5px;font-weight:600;color:var(--muted)}
-  .pcard .desc{margin:0 0 20px;font-size:14.5px;color:var(--muted);flex:1;line-height:1.68}
-  .pcard .row{display:flex;gap:10px;flex-wrap:wrap}
+.pcard {
+  background: var(--card2);
+  border: 1px solid var(--bd);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+}
+.pcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-  /* ── Philosophy ── */
-  .phil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  @media(max-width:920px){.phil-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.phil-grid{grid-template-columns:1fr}}
-  .feat{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:24px;transition:transform .2s}
-  .feat:hover{transform:translateY(-3px)}
-  .feat .ic{width:40px;height:40px;border-radius:11px;
-    background:color-mix(in srgb,var(--accent) 13%,transparent);
-    display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--accent)}
-  .feat .ic svg{width:20px;height:20px}
-  .feat h3{margin:0 0 6px;font-size:15.5px;font-weight:700}
-  .feat p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.62}
+.pcard-media { aspect-ratio: 16/9; overflow: hidden; background: var(--card); flex-shrink: 0; }
+.pcard-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s var(--ease-out);
+}
+.pcard:hover .pcard-media img { transform: scale(1.04); }
 
-  /* ── Contact ── */
-  .contact-box{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;
-    border-radius:28px;padding:64px 48px;text-align:center;box-shadow:0 24px 60px rgba(91,108,240,.26)}
-  .contact-box h2{font-size:30px;margin:0 0 12px;letter-spacing:-.02em;font-weight:800}
-  .contact-box p{opacity:.9;max-width:480px;margin:0 auto 28px;font-size:16.5px;line-height:1.65}
-  @media(max-width:640px){.contact-box{padding:44px 28px}}
+.pcard-media.gradient {
+  background: linear-gradient(135deg, #6d28d9, #a855f7);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+}
+.ciq-icon { width: 64px; height: 64px; border-radius: 18px; box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+.ciq-label { color: #fff; font-weight: 700; font-size: 14px; }
+.ciq-sub   { color: rgba(255,255,255,.6); font-size: 12.5px; }
 
-  /* ── Footer ── */
-  footer{border-top:1px solid var(--bd);padding:44px 0 32px}
-  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:28px}
-  .foot-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
-  .foot-brand img{width:26px;height:26px;border-radius:8px}
-  .foot-tag{color:var(--muted);font-size:13.5px;margin:8px 0 0;max-width:240px;line-height:1.62}
-  .foot-cols{display:flex;gap:52px;flex-wrap:wrap}
-  .foot-col h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 14px;font-weight:700}
-  .foot-col a{display:block;color:var(--fg);font-size:14px;margin-bottom:10px;opacity:.8;transition:opacity .15s,color .15s}
-  .foot-col a:hover{opacity:1;color:var(--accent)}
-  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    color:var(--muted);font-size:13px;border-top:1px solid var(--bd);padding-top:22px}
-  .foot-bottom a{color:var(--muted);transition:color .15s}
-  .foot-bottom a:hover{color:var(--fg)}
+.pcard-body { padding: 24px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.pcard-icon { width: 48px; height: 48px; border-radius: 13px; border: 1px solid var(--bd); flex-shrink: 0; }
+
+.badge {
+  font-size: 11.5px; font-weight: 700; padding: 4px 10px;
+  border-radius: 999px; white-space: nowrap; letter-spacing: .01em;
+}
+.badge.live {
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  color: #16a34a;
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+}
+.badge.soon {
+  background: color-mix(in srgb, #8a6cf0 12%, transparent);
+  color: #8a6cf0;
+  border: 1px solid color-mix(in srgb, #8a6cf0 28%, transparent);
+}
+
+.pcard h3 { font-size: 21px; font-weight: 800; letter-spacing: -.015em; margin-bottom: 4px; }
+.pcard .tag { font-size: 13.5px; font-weight: 600; color: var(--muted); margin-bottom: 12px; }
+.pcard .desc { font-size: 14.5px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 22px; }
+.pcard .row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ─── Philosophy ─────────────────────────────────── */
+.phil-bg {
+  background: var(--card);
+  border-radius: 32px;
+  padding: 72px 60px;
+}
+@media (max-width: 640px) { .phil-bg { padding: 48px 28px; } }
+.phil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+@media (max-width: 960px) { .phil-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px)  { .phil-grid { grid-template-columns: 1fr; } }
+
+.feat {
+  background: var(--card2); border: 1px solid var(--bd);
+  border-radius: 20px; padding: 26px;
+  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.feat:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.feat-ic {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); margin-bottom: 16px;
+}
+.feat-ic svg { width: 22px; height: 22px; }
+.feat h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feat p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* ─── CTA box ────────────────────────────────────── */
+.cta-box {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; border-radius: 32px;
+  padding: 80px 60px; text-align: center;
+  box-shadow: 0 32px 80px rgba(91,108,240,.28);
+  position: relative; overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; top: -60%; right: -10%; width: 500px; height: 500px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06); pointer-events: none;
+}
+.cta-box h2 {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 800; letter-spacing: -.02em; margin-bottom: 14px;
+}
+.cta-box p {
+  font-size: 17px; opacity: .88; max-width: 460px;
+  margin: 0 auto 32px; line-height: 1.7;
+}
+@media (max-width: 640px) { .cta-box { padding: 52px 28px; } }
+
+/* ─── Footer ─────────────────────────────────────── */
+footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
+.foot-grid {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; flex-wrap: wrap; gap: 40px;
+  margin-bottom: 36px;
+}
+.foot-brand-col .brand { margin-bottom: 10px; }
+.foot-tagline { font-size: 13.5px; color: var(--muted); max-width: 230px; line-height: 1.65; }
+.foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+.foot-col h4 {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+.foot-col a {
+  display: block; font-size: 14px; color: var(--fg); margin-bottom: 11px;
+  opacity: .75; transition: opacity .15s, color .15s;
+}
+.foot-col a:hover { opacity: 1; color: var(--accent); }
+.foot-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  border-top: 1px solid var(--bd); padding-top: 24px;
+  font-size: 13px; color: var(--muted);
+}
+.foot-bottom a { color: var(--muted); transition: color .15s; }
+.foot-bottom a:hover { color: var(--fg); }
+
+/* ─── Divider ────────────────────────────────────── */
+.divider { height: 1px; background: var(--bd); margin: 0; }
 </style>
 </head>
 <body>
 
+<!-- ── Header ── -->
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top"><img src="assets/img/tapdot-icon-256.png" alt="">tapdot</a>
+    <a class="brand" href="#top">
+      <img src="assets/img/tapdot-icon-256.png" alt="">
+      tapdot
+    </a>
     <nav class="nav-links">
       <a class="minor" href="#products">Products</a>
       <a class="minor" href="#philosophy">Why tapdot</a>
@@ -186,180 +403,212 @@
 
 <main id="top">
 
-  <!-- Hero -->
+  <!-- ── Hero ── -->
   <section class="hero">
-    <div class="wrap" style="text-align:center;display:flex;flex-direction:column;align-items:center">
-      <span class="kicker">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="wrap hero-text">
+      <span class="kicker" data-reveal="up">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
         Four extensions. One small studio.
       </span>
-      <h1>Handy web tools,<br><span class="grad-text">one tap away.</span></h1>
-      <p class="lede">tapdot builds small, fast browser extensions that do one job well — no accounts, no ads, no trackers, nothing sent anywhere it shouldn't be.</p>
-      <div class="cta-row">
+      <h1 data-reveal="up" data-delay="1">
+        Handy web tools,<br>
+        <span class="grad-text">one tap away.</span>
+      </h1>
+      <p class="lede" data-reveal="up" data-delay="2">
+        tapdot builds small, fast browser extensions that do one job well — no accounts, no ads, no trackers, nothing sent anywhere it shouldn't be.
+      </p>
+      <div class="cta-row" data-reveal="up" data-delay="3">
         <a class="btn primary" href="#products">Explore extensions</a>
         <a class="btn ghost" href="#philosophy">Our approach</a>
       </div>
+    </div>
 
-      <div class="orbit-wrap" aria-hidden="true">
+    <div class="orbit-section" aria-hidden="true">
+      <div class="orbit-wrap">
         <div class="orbit-ring r1"></div>
         <div class="orbit-ring r2"></div>
-        <div class="orbit-core"><img src="assets/img/tapdot-icon-256.png" alt=""></div>
-        <div class="sat s1" style="--r:109px"><img src="assets/img/floatdeck-icon.png" alt="FloatDeck"></div>
-        <div class="sat s4" style="--r:109px"><img src="assets/img/commentiq-icon.png" alt="CommentIQ"></div>
-        <div class="sat s2" style="--r:187px"><img src="assets/img/tab-memory-icon.png" alt="Tab Memory Manager"></div>
-        <div class="sat s3" style="--r:187px"><img src="assets/img/margin-icon.png" alt="Margin"></div>
+        <div class="orbit-core">
+          <img src="assets/img/tapdot-icon-256.png" alt="">
+        </div>
+        <div class="sat s1" style="--r:100px"><img src="assets/img/floatdeck-icon.png"    alt="FloatDeck"></div>
+        <div class="sat s4" style="--r:100px"><img src="assets/img/commentiq-icon.png"    alt="CommentIQ"></div>
+        <div class="sat s2" style="--r:170px"><img src="assets/img/tab-memory-icon.png"   alt="Tab Memory Manager"></div>
+        <div class="sat s3" style="--r:170px"><img src="assets/img/margin-icon.png"        alt="Margin"></div>
       </div>
     </div>
   </section>
 
-  <!-- Trust strip -->
-  <div class="trust wrap">
+  <!-- ── Trust strip ── -->
+  <div class="trust wrap" data-reveal="up">
     <span><b>3</b> live &amp; <b>1</b> in development</span>
     <span><b>0</b> accounts required</span>
     <span><b>Local-first</b> by default</span>
     <span><b>No</b> ad trackers, ever</span>
   </div>
 
-  <!-- Products -->
-  <section id="products" class="wrap">
-    <h2 class="h2">The lineup</h2>
-    <p class="sub">Each tapdot extension is built to solve one real, everyday browser annoyance — nothing more, nothing bloated.</p>
-    <div class="products">
-
-      <div class="pcard">
-        <div class="pcard-media">
-          <img src="floatdeck/img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" />
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <img class="pcard-icon" src="assets/img/floatdeck-icon.png" alt="" />
-            <span class="badge live">Live on Chrome</span>
-          </div>
-          <h3>FloatDeck</h3>
-          <p class="tag">Floating button &amp; quick actions</p>
-          <p class="desc">A draggable floating button that fans open into a radial menu of one-tap actions — screenshots, dark &amp; reading mode, QR codes, copy tools, translate and more. 25+ actions, fully private.</p>
-          <div class="row">
-            <a class="btn primary sm" href="https://chromewebstore.google.com/detail/floatdeck-floating-button/fanagpncolgnoglmhamngmcnadkffmlo" target="_blank" rel="noopener">Add to Chrome</a>
-            <a class="btn ghost sm" href="floatdeck/index.html">Learn more →</a>
-          </div>
+  <!-- ── Products ── -->
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-header">
+        <div data-reveal="up">
+          <span class="section-label">The lineup</span>
+          <h2 class="section-heading">Browser tools built to last</h2>
+          <p class="section-sub">Each extension solves one real everyday annoyance — nothing more, nothing bloated.</p>
         </div>
       </div>
 
-      <div class="pcard">
-        <div class="pcard-media">
-          <img src="tab-memory-manager/img/screenshot-1.png" alt="Tab Memory Manager popup showing memory per tab" loading="lazy" />
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <img class="pcard-icon" src="assets/img/tab-memory-icon.png" alt="" />
-            <span class="badge live">Live on Chrome</span>
-          </div>
-          <h3>Tab Memory Manager</h3>
-          <p class="tag">RAM viewer &amp; tab hibernator</p>
-          <p class="desc">See estimated memory per tab, then hibernate, close, or group idle tabs in one click. Smart suggestions surface your biggest, stalest tabs — everything stays on your device.</p>
-          <div class="row">
-            <a class="btn primary sm" href="https://chromewebstore.google.com/detail/tab-memory-manager/minmahgdnlfeehhooofdkjbhlodbobmd" target="_blank" rel="noopener">Add to Chrome</a>
-            <a class="btn ghost sm" href="tab-memory-manager/index.html">Learn more →</a>
-          </div>
-        </div>
-      </div>
+      <div class="products">
 
-      <div class="pcard">
-        <div class="pcard-media">
-          <img src="margin/img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" />
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <img class="pcard-icon" src="assets/img/margin-icon.png" alt="" />
-            <span class="badge live">Live on Chrome</span>
+        <div class="pcard" data-reveal="up" data-delay="0">
+          <div class="pcard-media">
+            <img src="floatdeck/img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" />
           </div>
-          <h3>Margin</h3>
-          <p class="tag">Bite-sized news, in your side panel</p>
-          <p class="desc">25 curated topics, one InShorts-style card at a time, right in your browser side panel. On-device AI summaries, five themes, and a personal reading dashboard.</p>
-          <div class="row">
-            <a class="btn primary sm" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome</a>
-            <a class="btn ghost sm" href="margin/index.html">Learn more →</a>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/floatdeck-icon.png" alt="" />
+              <span class="badge live">Live on Chrome</span>
+            </div>
+            <h3>FloatDeck</h3>
+            <p class="tag">Floating button &amp; quick actions</p>
+            <p class="desc">A draggable floating button that fans into a radial menu of one-tap actions — screenshots, dark &amp; reading mode, QR codes, copy tools, translate and more. 25+ actions, fully private.</p>
+            <div class="row">
+              <a class="btn primary sm" href="https://chromewebstore.google.com/detail/floatdeck-floating-button/fanagpncolgnoglmhamngmcnadkffmlo" target="_blank" rel="noopener">Add to Chrome</a>
+              <a class="btn ghost sm" href="floatdeck/index.html">Learn more →</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="pcard">
-        <div class="pcard-media gradient">
-          <img class="ciq-icon" src="assets/img/commentiq-icon.png" alt="" />
-          <span class="ciq-label">In active development</span>
-          <span class="ciq-sub">Coming to Chrome Web Store · 2026</span>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <img class="pcard-icon" src="assets/img/commentiq-icon.png" alt="" />
-            <span class="badge soon">Coming soon</span>
+        <div class="pcard" data-reveal="up" data-delay="1">
+          <div class="pcard-media">
+            <img src="tab-memory-manager/img/screenshot-1.png" alt="Tab Memory Manager popup showing memory per tab" loading="lazy" />
           </div>
-          <h3>CommentIQ</h3>
-          <p class="tag">YouTube comment analyzer</p>
-          <p class="desc">Analyze YouTube comments with on-device AI. Sentiment breakdown, topic extraction, questions &amp; ideas — all powered by Gemini Nano, all private, no servers.</p>
-          <div class="row">
-            <a class="btn primary sm" href="mailto:rkmohanchn@gmail.com?subject=CommentIQ%20Early%20Access">Join waitlist</a>
-            <a class="btn ghost sm" href="commentiq/index.html">Learn more →</a>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/tab-memory-icon.png" alt="" />
+              <span class="badge live">Live on Chrome</span>
+            </div>
+            <h3>Tab Memory Manager</h3>
+            <p class="tag">RAM viewer &amp; tab hibernator</p>
+            <p class="desc">See estimated memory per tab, then hibernate, close, or group idle tabs in one click. Smart suggestions surface your biggest, stalest tabs — everything stays on your device.</p>
+            <div class="row">
+              <a class="btn primary sm" href="https://chromewebstore.google.com/detail/tab-memory-manager/minmahgdnlfeehhooofdkjbhlodbobmd" target="_blank" rel="noopener">Add to Chrome</a>
+              <a class="btn ghost sm" href="tab-memory-manager/index.html">Learn more →</a>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
-  </section>
+        <div class="pcard" data-reveal="up" data-delay="2">
+          <div class="pcard-media">
+            <img src="margin/img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" />
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/margin-icon.png" alt="" />
+              <span class="badge live">Live on Chrome</span>
+            </div>
+            <h3>Margin</h3>
+            <p class="tag">Bite-sized news, in your side panel</p>
+            <p class="desc">25 curated topics, one InShorts-style card at a time, right in your browser side panel. On-device AI summaries, five themes, and a personal reading dashboard.</p>
+            <div class="row">
+              <a class="btn primary sm" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome</a>
+              <a class="btn ghost sm" href="margin/index.html">Learn more →</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- Philosophy -->
-  <section id="philosophy" class="wrap">
-    <h2 class="h2">Why tapdot</h2>
-    <p class="sub">A handful of principles every extension is held to, no exceptions.</p>
-    <div class="phil-grid">
-      <div class="feat">
-        <div class="ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="pcard" data-reveal="up" data-delay="3">
+          <div class="pcard-media gradient">
+            <img class="ciq-icon" src="assets/img/commentiq-icon.png" alt="" />
+            <span class="ciq-label">In active development</span>
+            <span class="ciq-sub">Coming to Chrome Web Store · 2026</span>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/commentiq-icon.png" alt="" />
+              <span class="badge soon">Coming soon</span>
+            </div>
+            <h3>CommentIQ</h3>
+            <p class="tag">YouTube comment analyzer</p>
+            <p class="desc">Analyze YouTube comments with on-device AI. Sentiment breakdown, topic extraction, questions &amp; ideas — all powered by Gemini Nano, all private, no servers.</p>
+            <div class="row">
+              <a class="btn primary sm" href="mailto:rkmohanchn@gmail.com?subject=CommentIQ%20Early%20Access">Join waitlist</a>
+              <a class="btn ghost sm" href="commentiq/index.html">Learn more →</a>
+            </div>
+          </div>
         </div>
-        <h3>Private by design</h3>
-        <p>No ads, no analytics, no hidden servers. What can run locally, runs locally — always.</p>
-      </div>
-      <div class="feat">
-        <div class="ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
-        </div>
-        <h3>Built for speed</h3>
-        <p>No frameworks where they're not needed. Tools that open instantly and stay out of your way.</p>
-      </div>
-      <div class="feat">
-        <div class="ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-        </div>
-        <h3>One job, done well</h3>
-        <p>Every extension solves a single, real annoyance instead of trying to be everything.</p>
-      </div>
-      <div class="feat">
-        <div class="ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
-        </div>
-        <h3>Independent &amp; honest</h3>
-        <p>A small studio, no investors to please — free tiers stay genuinely useful, pricing stays upfront.</p>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="wrap">
-    <div class="contact-box">
-      <h2>Got feedback, a bug, or an idea?</h2>
-      <p>tapdot is built by one person who reads every email. Reach out about any extension, or just to say hi.</p>
-      <a class="btn" style="background:#fff;color:var(--accent);font-weight:700" href="mailto:rkmohanchn@gmail.com">Email rkmohanchn@gmail.com</a>
+  <!-- ── Philosophy ── -->
+  <section class="section-sm" id="philosophy">
+    <div class="wrap">
+      <div class="phil-bg">
+        <div class="section-header" style="margin-bottom:52px" data-reveal="up">
+          <span class="section-label">Why tapdot</span>
+          <h2 class="section-heading">Principles we don't compromise on</h2>
+          <p class="section-sub">Every extension is held to the same bar, no exceptions.</p>
+        </div>
+        <div class="phil-grid">
+          <div class="feat" data-reveal="up" data-delay="0">
+            <div class="feat-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Private by design</h3>
+            <p>No ads, no analytics, no hidden servers. What can run locally, runs locally — always.</p>
+          </div>
+          <div class="feat" data-reveal="up" data-delay="1">
+            <div class="feat-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+            </div>
+            <h3>Built for speed</h3>
+            <p>No frameworks where they're not needed. Tools that open instantly and stay out of your way.</p>
+          </div>
+          <div class="feat" data-reveal="up" data-delay="2">
+            <div class="feat-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+            </div>
+            <h3>One job, done well</h3>
+            <p>Every extension solves a single, real annoyance instead of trying to be everything.</p>
+          </div>
+          <div class="feat" data-reveal="up" data-delay="3">
+            <div class="feat-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </div>
+            <h3>Independent &amp; honest</h3>
+            <p>A small studio, no investors to please — free tiers stay genuinely useful, pricing stays upfront.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="cta-box" data-reveal="scale">
+        <h2>Got feedback, a bug, or an idea?</h2>
+        <p>tapdot is built by one person who reads every email. Reach out about any extension, or just to say hi.</p>
+        <a class="btn white" href="mailto:rkmohanchn@gmail.com">Email rkmohanchn@gmail.com</a>
+      </div>
     </div>
   </section>
 
 </main>
 
+<!-- ── Footer ── -->
 <footer>
   <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <a class="foot-brand" href="#top"><img src="assets/img/tapdot-icon-256.png" alt="">tapdot</a>
-        <p class="foot-tag">Handy web tools, one tap away. Small, independent, privacy-first browser extensions.</p>
+    <div class="foot-grid">
+      <div class="foot-brand-col">
+        <a class="brand" href="#top">
+          <img src="assets/img/tapdot-icon-256.png" alt="">
+          tapdot
+        </a>
+        <p class="foot-tagline">Handy web tools, one tap away. Small, independent, privacy-first browser extensions.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
@@ -379,7 +628,7 @@
         <div class="foot-col">
           <h4>Connect</h4>
           <a href="mailto:rkmohanchn@gmail.com">Contact</a>
-          <a href="https://tapdot.lemonsqueezy.com" target="_blank" rel="noopener">Store (Lemon Squeezy)</a>
+          <a href="https://tapdot.lemonsqueezy.com" target="_blank" rel="noopener">Store</a>
         </div>
       </div>
     </div>
@@ -389,6 +638,23 @@
     </div>
   </div>
 </footer>
+
+<script>
+// ── Scroll reveal via Intersection Observer ──
+(function () {
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 
 </body>
 </html>
