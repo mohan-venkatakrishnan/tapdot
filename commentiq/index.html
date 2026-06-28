@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CommentIQ — YouTube Comment Analyzer with On-Device AI</title>
+<meta name="description" content="Analyze YouTube comments with on-device AI. Sentiment breakdown, topic extraction, questions, ideas, and trends — all private, all local. Coming to Chrome Web Store soon." />
+<link rel="icon" href="img/icon.png" />
+<meta property="og:title" content="CommentIQ — YouTube Comment Analyzer" />
+<meta property="og:description" content="Uncover what your audience really thinks. Sentiment, topics, questions — powered by on-device AI." />
+<meta property="og:image" content="img/icon.png" />
+<meta name="theme-color" content="#8b5cf6" />
+<style>
+  :root{
+    --bg:#ffffff; --fg:#15151a; --muted:#6b6b73; --card:#f6f7f9; --bd:#e6e7ec;
+    --accent:#8b5cf6; --accent2:#a855f7; --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0f1014; --fg:#ececf0; --muted:#9a9aa3; --card:#191a20; --bd:#272832; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:12px;padding:12px 20px;cursor:pointer;border:0}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{filter:brightness(1.07)}
+  .btn.ghost{background:transparent;border:1px solid var(--bd);color:var(--fg)}
+
+  .crumb{background:color-mix(in srgb,var(--accent) 7%,transparent);border-bottom:1px solid var(--bd)}
+  .crumb .wrap{display:flex;align-items:center;height:34px;font-size:13px;color:var(--muted);gap:6px}
+  .crumb a{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--fg)}
+  .crumb a:hover{color:var(--accent)}
+  .crumb img{width:16px;height:16px;border-radius:5px}
+
+  header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(160%) blur(12px);
+    background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--bd)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em;font-size:18px}
+  .brand img{width:28px;height:28px;border-radius:8px}
+  .nav-links{display:flex;align-items:center;gap:22px}
+  .nav-links a.minor{color:var(--muted);font-weight:500}
+  .nav-links a.minor:hover{color:var(--fg)}
+  @media(max-width:640px){.nav-links a.minor{display:none}}
+  .dev-badge{font-size:12px;font-weight:700;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);
+    border:1px solid color-mix(in srgb,var(--accent) 32%,transparent);padding:5px 11px;border-radius:999px}
+
+  .hero{position:relative;overflow:hidden}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0 64px}
+  @media(max-width:820px){.hero-inner{grid-template-columns:1fr;text-align:center;padding:52px 0 44px}}
+  h1{font-size:46px;line-height:1.08;letter-spacing:-.02em;margin:0 0 16px}
+  @media(max-width:820px){h1{font-size:34px}}
+  .lede{font-size:19px;color:var(--muted);margin:0 0 26px;max-width:560px}
+  @media(max-width:820px){.lede{margin-inline:auto}}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:820px){.cta{justify-content:center}}
+  .tiny{margin-top:16px;font-size:13px;color:var(--muted)}
+  .tiny b{color:var(--fg)}
+
+  .stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:320px;border-radius:24px;
+    background:linear-gradient(135deg,#8b5cf6,#a855f7);box-shadow:0 30px 60px rgba(139,92,246,.28)}
+  .stage-inner{text-align:center;padding:40px;max-width:380px}
+  .coming-soon-text{color:#fff;font-size:18px;font-weight:600;margin-bottom:10px}
+  .coming-soon-desc{color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;margin-bottom:24px}
+
+  .trust{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;padding:18px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);color:var(--muted);font-size:14px}
+  .trust b{color:var(--fg)}
+
+  section{padding:64px 0}
+  .h2{font-size:30px;letter-spacing:-.01em;margin:0 0 8px;text-align:center}
+  .sub{color:var(--muted);text-align:center;max-width:640px;margin:0 auto 38px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:22px}
+  .card .ic{width:40px;height:40px;border-radius:11px;background:color-mix(in srgb,var(--accent) 16%,transparent);
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--accent)}
+  .card .ic svg{width:22px;height:22px}
+  .card h3{margin:0 0 6px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.shots{grid-template-columns:1fr}}
+  .shots img{width:100%;border-radius:14px;border:1px solid var(--bd);display:block}
+
+  .privacy{background:linear-gradient(135deg,#8b5cf6,#a855f7);color:#fff;border-radius:24px;padding:48px;text-align:center}
+  .privacy h2{font-size:30px;margin:0 0 10px}
+  .privacy p{opacity:.92;max-width:620px;margin:0 auto 22px}
+  .privacy .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px}
+
+  .waitlist-box{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:48px;text-align:center}
+  .waitlist-box h2{font-size:28px;margin:0 0 10px}
+  .waitlist-box p{color:var(--muted);max-width:540px;margin:0 auto 22px}
+
+  footer{border-top:1px solid var(--bd);padding:30px 0;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .foot a{color:var(--muted)}.foot a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+<div class="crumb"><div class="wrap"><a href="../index.html"><img src="../assets/img/tapdot-icon-256.png" alt="">tapdot</a><span>/ CommentIQ</span></div></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">CommentIQ</a>
+    <nav class="nav-links">
+      <a class="minor" href="#features">Features</a>
+      <a class="minor" href="#privacy">Privacy</a>
+      <span class="dev-badge">In development</span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>Understand what your<br>audience really thinks.</h1>
+        <p class="lede">CommentIQ analyzes YouTube comments with on-device AI — sentiment breakdown, topic extraction, questions, content ideas, and trends. All private. No servers. No tracking.</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:rkmohanchn@gmail.com?subject=CommentIQ%20Early%20Access">Join the early-access list</a>
+          <a class="btn ghost" href="#features">See features</a>
+        </div>
+        <p class="tiny"><b>Powered by Gemini Nano.</b> Everything runs locally. Coming to Chrome Web Store soon.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-inner">
+          <div class="coming-soon-text">🚀 Coming soon</div>
+          <div class="coming-soon-desc">Testing on real YouTube videos. Fine-tuning on-device AI insights. Launching on Chrome Web Store.</div>
+          <div style="color:#fff;font-size:12px;opacity:.8">Beta testing: <strong>June–July 2026</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust wrap">
+    <span><b>100% on-device</b></span><span><b>Powered by Gemini Nano</b></span><span>No backend servers</span><span>No analytics</span><span>Completely private</span>
+  </div>
+
+  <section id="features" class="wrap">
+    <h2 class="h2">Uncover audience insights instantly</h2>
+    <p class="sub">Sentiment breakdown, topic analysis, questions, ideas — all from comment analysis powered by local AI.</p>
+    <div class="grid" id="feature-grid"></div>
+  </section>
+
+  <section id="privacy" class="wrap">
+    <div class="privacy">
+      <h2>Privacy by design</h2>
+      <p>CommentIQ has no backend, no servers, no analytics, and no tracking. Comments are fetched once, analysed locally using Chrome's Gemini Nano, and never sent anywhere. Your YouTube data stays on your device — always.</p>
+      <div class="pills">
+        <span class="pill">100% local</span>
+        <span class="pill">No servers</span>
+        <span class="pill">No tracking</span>
+        <span class="pill">Your data, your device</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="waitlist-box">
+      <h2>Be first to try it</h2>
+      <p>CommentIQ is in active development. Join the early-access list to get beta testing invites, exclusive updates, and lifetime Pro at launch.</p>
+      <a class="btn primary" href="mailto:rkmohanchn@gmail.com?subject=CommentIQ%20Early%20Access&body=I%27d%20like%20to%20be%20notified%20when%20CommentIQ%20is%20ready%20for%20testing.">Notify me when ready</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© CommentIQ &nbsp;·&nbsp; a <a href="../index.html">tapdot</a> tool</span>
+    <span>
+      <a href="privacy.html">Privacy Policy</a>
+      &nbsp;·&nbsp; <a href="mailto:rkmohanchn@gmail.com">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  var ICONS = {
+    chart:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>',
+    sparkle:'<path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4 1.5-7.5L3 9l6.5-.5L12 2z"/>',
+    zap:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    trend:'<polyline points="23 6 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 6 23 6 23 12"/>',
+    lock:'<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/>'
+  };
+  function svg(p,stroke){return '<svg viewBox="0 0 24 24" fill="none" stroke="'+(stroke||'#fff')+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';}
+  var FEATURES=[
+    [ICONS.chart,'Sentiment breakdown','Positive, neutral, critical percentages with a visual donut chart. See at a glance what your audience thinks.'],
+    [ICONS.sparkle,'Topic extraction','Discover what your audience is talking about most — ranked by frequency across all comments.'],
+    [ICONS.zap,'Questions & ideas','Automatically extract the top questions your viewers ask and the content ideas they suggest.'],
+    [ICONS.chat,'Comment search','Search across fetched comments by keyword (Pro: sentiment, type, and regex filters).'],
+    [ICONS.trend,'Sentiment trends','Track how audience mood shifts from early comments to the latest (Pro: trends across multiple videos).'],
+    [ICONS.lock,'Always private','No servers, no accounts, no analytics. Everything runs on your device. Your YouTube data never leaves your browser.']
+  ];
+  var g=document.getElementById('feature-grid');
+  FEATURES.forEach(function(f){
+    var d=document.createElement('div');d.className='card';
+    d.innerHTML='<div class="ic">'+svg(f[0],'currentColor')+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p>';
+    g.appendChild(d);
+  });
+</script>
+</body>
+</html>

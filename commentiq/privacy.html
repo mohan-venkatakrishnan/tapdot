@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CommentIQ — Privacy Policy</title>
+<link rel="icon" href="img/icon.png" />
+<style>
+  :root{--bg:#fff;--fg:#15151a;--muted:#6b6b73;--bd:#e6e7ec;--accent:#8b5cf6}
+  @media (prefers-color-scheme: dark){:root{--bg:#0f1014;--fg:#ececf0;--muted:#9a9aa3;--bd:#272832}}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .crumb{background:color-mix(in srgb,var(--accent) 7%,transparent);border-bottom:1px solid var(--bd)}
+  .crumb .inner{max-width:760px;margin:0 auto;padding:0 22px;display:flex;align-items:center;height:34px;font-size:13px;color:var(--muted);gap:6px}
+  .crumb a{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--fg);text-decoration:none}
+  .crumb a:hover{color:var(--accent)}
+  .crumb img{width:16px;height:16px;border-radius:5px}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  a{color:var(--accent)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:8px;text-decoration:none;color:inherit}
+  .brand img{width:26px;height:26px;border-radius:7px}
+  h1{font-size:30px;margin:14px 0 4px}
+  .date{color:var(--muted);margin:0 0 28px}
+  h2{font-size:18px;margin:28px 0 8px}
+  ul{padding-left:20px}
+  .muted{color:var(--muted)}
+  hr{border:0;border-top:1px solid var(--bd);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="crumb"><div class="inner"><a href="../index.html"><img src="../assets/img/tapdot-icon-256.png" alt="">tapdot</a><span>/ CommentIQ</span></div></div>
+<div class="wrap">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="">CommentIQ</a>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: 28 June 2026</p>
+
+  <p>CommentIQ is built to be private by design. <strong>We do not collect, transmit, sell, or
+  share your data</strong> — no analytics, no tracking, no servers, no accounts.
+  Everything the extension does runs locally in your browser using Chrome's Gemini Nano.</p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li><strong>No backend servers.</strong> CommentIQ has no infrastructure — no data leaves your device.</li>
+    <li><strong>No personal data collection.</strong> We don't see your YouTube username, video history, comment list, or analysis results.</li>
+    <li><strong>No analytics or tracking.</strong> No event logging, no user tracking, no telemetry.</li>
+    <li><strong>No accounts required.</strong> Install and use immediately — no sign-up needed.</li>
+    <li><strong>100% on-device analysis.</strong> Comments are fetched locally, analysed by Gemini Nano on your machine, stored only in your browser's storage.</li>
+  </ul>
+
+  <h2>What CommentIQ accesses</h2>
+  <p>To fetch and analyse comments, the extension reads:</p>
+  <ul>
+    <li><strong>The current YouTube video ID</strong> — to fetch that video's comments via the Innertube API</li>
+    <li><strong>Comment text</strong> — fetched from YouTube's public comment API, used only for local analysis</li>
+    <li><strong>Comment metadata</strong> (optional) — like count, publish date, author (if extracted from Innertube, used only for local sorting/filtering)</li>
+  </ul>
+  <p>Comments are processed entirely in your browser using Gemini Nano. No comments or analysis results are sent anywhere.</p>
+
+  <h2>What is stored, and where</h2>
+  <p>CommentIQ stores the following <strong>locally on your device only</strong>, using Chrome's <code>storage.local</code> API:</p>
+  <ul>
+    <li>Your theme preference (Light, Dark, Midnight, Cream)</li>
+    <li>Analysis results for the current video (cached so re-opening the video reuses results)</li>
+    <li>Daily quota usage (free plan limit tracking)</li>
+    <li>Pro subscription status (if purchased)</li>
+  </ul>
+  <p>This data never leaves your browser. It is not sent to any server, and it is not accessible to us or any third party.</p>
+
+  <h2>Network requests CommentIQ makes</h2>
+  <ul>
+    <li><strong>YouTube Innertube API:</strong> Fetches comment data from YouTube's public API when you click "Analyse". This request includes your video ID and nothing else about you.</li>
+    <li><strong>No other requests:</strong> CommentIQ makes no requests to any other service. No analytics, no crash reporting, no telemetry.</li>
+  </ul>
+
+  <h2>Optional features (Pro)</h2>
+  <p>When you upgrade to Pro, CommentIQ stores additional data locally:</p>
+  <ul>
+    <li>Analysis history (up to 90 days of past video analyses)</li>
+    <li>Your Pro subscription key (used only for local validation, never transmitted)</li>
+  </ul>
+  <p>This data also stays on your device and is never sent to our servers.</p>
+
+  <h2>Gemini Nano (Chrome's built-in AI)</h2>
+  <p>CommentIQ uses Chrome's Prompt API to access Gemini Nano, Google's on-device language model.
+  Gemini Nano runs locally on your machine — the model operates entirely within Chrome's sandbox
+  and never makes requests to Google's servers during analysis. See <a href="https://support.google.com/chrome/answer/13519177"
+  target="_blank" rel="noopener">Google's Chrome documentation</a> for details on Gemini Nano's privacy model.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the "Last updated" date above will be revised. We'll notify early-access
+  testers of material changes.</p>
+
+  <hr>
+  <p class="muted">Questions about privacy? Email <a href="mailto:rkmohanchn@gmail.com">rkmohanchn@gmail.com</a>.</p>
+</div>
+</body>
+</html>
