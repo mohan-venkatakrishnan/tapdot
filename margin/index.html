@@ -109,6 +109,27 @@
   .shots img{width:100%;border-radius:16px;border:1px solid var(--bd);display:block;
     box-shadow:0 12px 36px rgba(0,0,0,.08)}
 
+  /* ── Pricing ── */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+  @media(max-width:620px){.price-grid{grid-template-columns:1fr}}
+  .plan{border:1px solid var(--bd);border-radius:20px;padding:28px 28px 24px;background:var(--card2);display:flex;flex-direction:column}
+  .plan.pro{border-color:var(--accent);box-shadow:0 8px 28px rgba(99,102,241,.14)}
+  .plan-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 16px}
+  .billing-tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--card);border-radius:10px;padding:4px}
+  .btab{flex:1;padding:7px 4px;font-size:12.5px;font-weight:600;border:0;border-radius:8px;
+    background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
+  .btab.active{background:var(--card2);color:var(--fg);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+  .plan-price{font-size:38px;font-weight:800;letter-spacing:-.025em;margin:0 0 4px;line-height:1}
+  .plan-price span{font-size:15px;font-weight:500;color:var(--muted)}
+  .plan-note{font-size:13px;color:var(--muted);margin:0 0 20px}
+  .plan ul{margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.9;flex:1}
+  .plan ul li{color:var(--muted)}
+  .plan ul li b{color:var(--fg);font-weight:600}
+  .plan-key-note{font-size:12.5px;color:var(--muted);margin:0 0 18px;opacity:.8}
+  .best-badge{display:inline-block;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;
+    font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;opacity:0;transition:opacity .2s}
+  .best-badge.show{opacity:1}
+
   /* ── Privacy ── */
   .privacy-box{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;
     border-radius:28px;padding:60px 48px;text-align:center;box-shadow:0 24px 60px rgba(99,102,241,.28)}
@@ -142,6 +163,7 @@
     <a class="brand" href="#top"><img src="img/icon.png" alt="">Margin</a>
     <nav class="nav-links">
       <a class="minor" href="#features">Features</a>
+      <a class="minor" href="#pricing">Pricing</a>
       <a class="minor" href="#privacy">Privacy</a>
       <a class="btn primary sm" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome</a>
     </nav>
@@ -193,6 +215,49 @@
     </div>
   </section>
 
+  <!-- Pricing -->
+  <section id="pricing" class="wrap">
+    <h2 class="h2">Free to start. Plus to unlock everything.</h2>
+    <p class="sub">Pick the plan that fits. One purchase gives you a license key — paste it in the extension and you're set across all your browsers.</p>
+    <div class="price-grid">
+
+      <div class="plan">
+        <p class="plan-name">Free</p>
+        <p class="plan-price">$0</p>
+        <p class="plan-note">No credit card. No account.</p>
+        <ul>
+          <li>3 topics</li>
+          <li>Default theme</li>
+          <li>News refreshes every 30 min</li>
+          <li>On-device AI summaries</li>
+          <li>Always links to original article</li>
+        </ul>
+        <a class="btn ghost" href="https://chromewebstore.google.com/detail/margin/kmiddbhoklpkheeopgoehknnkejohnhp" target="_blank" rel="noopener">Add to Chrome</a>
+      </div>
+
+      <div class="plan pro">
+        <p class="plan-name">Margin Plus</p>
+        <div class="billing-tabs" id="billing-tabs">
+          <button class="btab" data-period="monthly" data-price="$1.99" data-unit="/mo" data-note="$1.99 billed every month">Monthly</button>
+          <button class="btab active" data-period="annual" data-price="$14.99" data-unit="/yr" data-note="$14.99 billed every year · save 37%">Annual</button>
+          <button class="btab" data-period="lifetime" data-price="$29" data-unit="" data-note="Pay once, use forever.">Lifetime</button>
+        </div>
+        <p class="plan-price"><span id="plus-price">$14.99</span><span id="plus-unit" style="font-size:15px;font-weight:500;color:var(--muted)">/yr</span> <span class="best-badge show" id="best-badge">Best value</span></p>
+        <p class="plan-note" id="plus-note">$14.99 billed every year · save 37%</p>
+        <ul>
+          <li><b>Unlimited topics</b> — all 25 curated feeds</li>
+          <li><b>Every theme + custom colors</b> — light, sepia, dark, slate, midnight, your own accent</li>
+          <li><b>Live feed</b> — always-latest news on every open</li>
+          <li><b>Reading insights</b> — streaks, top topics, top sources</li>
+          <li>Everything in Free</li>
+        </ul>
+        <p class="plan-key-note">One purchase · license key · works across all your browsers</p>
+        <a class="btn primary" href="https://tapdot.lemonsqueezy.com/checkout" target="_blank" rel="noopener" id="plus-cta">Get Margin Plus</a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Privacy -->
   <section id="privacy" class="wrap">
     <div class="privacy-box">
@@ -241,6 +306,27 @@ var FEATURES = [
   [ICONS.theme,  'Five themes', 'Light, sepia, dark, slate, midnight — plus custom colors on Plus.'],
   [ICONS.chart,  'Reading insights', 'A personal dashboard of what you read, your streak, and your top topics.']
 ];
+/* ── Billing tab switcher ── */
+var tabs = document.querySelectorAll('.btab');
+var priceEl = document.getElementById('plus-price');
+var unitEl = document.getElementById('plus-unit');
+var noteEl = document.getElementById('plus-note');
+var badgeEl = document.getElementById('best-badge');
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    tab.classList.add('active');
+    priceEl.textContent = tab.dataset.price;
+    unitEl.textContent = tab.dataset.unit;
+    noteEl.textContent = tab.dataset.note;
+    if (tab.dataset.period === 'annual') {
+      badgeEl.classList.add('show');
+    } else {
+      badgeEl.classList.remove('show');
+    }
+  });
+});
+
 var g = document.getElementById('feat-grid');
 FEATURES.forEach(function(f) {
   var d = document.createElement('div');
