@@ -120,7 +120,7 @@
     background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
   .btab.active{background:var(--card2);color:var(--fg);box-shadow:0 1px 4px rgba(0,0,0,.1)}
   .plan-price{font-size:38px;font-weight:800;letter-spacing:-.025em;margin:0 0 4px;line-height:1}
-  .plan-price span{font-size:15px;font-weight:500;color:var(--muted)}
+  .plan-price .unit{font-size:15px;font-weight:500;color:var(--muted)}
   .plan-note{font-size:13px;color:var(--muted);margin:0 0 20px}
   .plan ul{margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.9;flex:1}
   .plan ul li{color:var(--muted)}
@@ -242,7 +242,7 @@
           <button class="btab active" data-period="annual" data-price="$14.99" data-unit="/yr" data-note="$14.99 billed every year · save 37%">Annual</button>
           <button class="btab" data-period="lifetime" data-price="$29" data-unit="" data-note="Pay once, use forever.">Lifetime</button>
         </div>
-        <p class="plan-price"><span id="plus-price">$14.99</span><span id="plus-unit" style="font-size:15px;font-weight:500;color:var(--muted)">/yr</span> <span class="best-badge show" id="best-badge">Best value</span></p>
+        <p class="plan-price"><span id="plus-price">$14.99</span><span id="plus-unit" class="unit">/yr</span> <span class="best-badge show" id="best-badge">Best value</span></p>
         <p class="plan-note" id="plus-note">$14.99 billed every year · save 37%</p>
         <ul>
           <li><b>Unlimited topics</b> — all 25 curated feeds</li>
@@ -252,7 +252,7 @@
           <li>Everything in Free</li>
         </ul>
         <p class="plan-key-note">One purchase · license key · works across all your browsers</p>
-        <a class="btn primary" href="https://tapdot.lemonsqueezy.com/checkout" target="_blank" rel="noopener" id="plus-cta">Get Margin Plus</a>
+        <a class="btn primary" href="https://tapdot.lemonsqueezy.com/checkout/buy/6270decd-09bd-4ca2-8723-ecd68025a80a" target="_blank" rel="noopener" id="plus-cta">Get Margin Plus</a>
       </div>
 
     </div>
