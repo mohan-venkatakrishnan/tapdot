@@ -263,9 +263,9 @@ h1 {
 }
 .pcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-.pcard-media { overflow: hidden; background: var(--card); flex-shrink: 0; }
+.pcard-media { aspect-ratio: 8/5; overflow: hidden; background: var(--card); flex-shrink: 0; }
 .pcard-media img {
-  width: 100%; height: auto; display: block;
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
   transition: transform .5s var(--ease-out);
 }
 .pcard:hover .pcard-media img { transform: scale(1.04); }
