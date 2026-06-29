@@ -271,14 +271,6 @@ h1 {
 }
 .pcard:hover .pcard-media img { transform: scale(1.04); }
 
-.pcard-media.gradient {
-  background: linear-gradient(135deg, #e11d48, #fb7185);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 12px;
-}
-.ciq-icon { width: 64px; height: 64px; border-radius: 18px; box-shadow: 0 12px 32px rgba(0,0,0,.3); }
-.ciq-label { color: #fff; font-weight: 700; font-size: 14px; }
-.ciq-sub   { color: rgba(255,255,255,.6); font-size: 12.5px; }
 
 .pcard-body { padding: 24px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -522,10 +514,8 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         </div>
 
         <div class="pcard" data-reveal="up" data-delay="3">
-          <div class="pcard-media gradient">
-            <img class="ciq-icon" src="assets/img/commentiq-icon.png" alt="" />
-            <span class="ciq-label">In active development</span>
-            <span class="ciq-sub">Coming to Chrome Web Store · 2026</span>
+          <div class="pcard-media">
+            <img src="commentiq/store-assets/small-promo.png" alt="CommentIQ YouTube comment analyzer preview" loading="lazy" />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
