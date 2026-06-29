@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script>!function(){var t=localStorage.getItem('tapdot-theme');t&&document.documentElement.setAttribute('data-theme',t)}()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tapdot — Handy web tools, one tap away.</title>
 <meta name="description" content="tapdot builds small, fast, privacy-first browser extensions: FloatDeck, Tab Memory Manager, Margin, and CommentIQ. No accounts, no ad trackers, nothing sent anywhere it shouldn't be." />
@@ -38,6 +39,20 @@
     --shadow-md: 0 8px 28px rgba(0,0,0,.35);
     --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
   }
+}
+[data-theme="dark"] {
+  --bg: #0c0d12; --fg: #eeeef2; --muted: #9c9ca8;
+  --card: #14151c; --card2: #181921; --bd: #262733;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
+  --shadow-md: 0 8px 28px rgba(0,0,0,.35);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
+}
+[data-theme="light"] {
+  --bg: #ffffff; --fg: #13131a; --muted: #6b6b77;
+  --card: #f5f6f8; --card2: #ffffff; --bd: #e7e8ee;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-md: 0 8px 28px rgba(76,60,170,.12);
+  --shadow-lg: 0 24px 64px rgba(76,60,170,.14);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -116,6 +131,11 @@ header {
 }
 .nav-links a.minor:hover { color: var(--fg); }
 @media (max-width: 680px) { .nav-links a.minor { display: none; } }
+.theme-btn { width: 36px; height: 36px; border-radius: 10px; background: transparent;
+  border: 1.5px solid var(--bd); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--muted); transition: color .15s, border-color .15s; flex-shrink: 0; padding: 0; }
+.theme-btn:hover { color: var(--fg); border-color: var(--accent); }
+.theme-btn svg { width: 16px; height: 16px; pointer-events: none; }
 
 /* ─── Hero ───────────────────────────────────────── */
 .hero {
@@ -390,6 +410,10 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
       <a class="minor" href="#products">Products</a>
       <a class="minor" href="#philosophy">Why tapdot</a>
       <a class="minor" href="#contact">Contact</a>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
       <a class="btn primary sm" href="#products">Explore extensions</a>
     </nav>
   </div>
@@ -645,6 +669,26 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
   els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ── Theme toggle ── */
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  var sun=document.getElementById('icon-sun');
+  var moon=document.getElementById('icon-moon');
+  var root=document.documentElement;
+  function isDark(){
+    var t=root.getAttribute('data-theme');
+    return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function apply(dark){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    localStorage.setItem('tapdot-theme',dark?'dark':'light');
+    sun.style.display=dark?'block':'none';
+    moon.style.display=dark?'none':'block';
+  }
+  apply(isDark());
+  btn.addEventListener('click',function(){apply(!isDark());});
 })();
 </script>
 
