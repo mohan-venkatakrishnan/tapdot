@@ -232,9 +232,9 @@ h1 {
   .sat.s3 { transform: rotate(270deg) translateX(var(--r)) rotate(-270deg); }
 }
 @media (max-width: 640px) {
-  .orbit-wrap { height: 280px; }
-  .orbit-ring.r1 { width: 154px; height: 154px; }
-  .orbit-ring.r2 { width: 262px; height: 262px; }
+  .orbit-wrap { height: 240px; }
+  .orbit-ring.r1 { width: 130px; height: 130px; }
+  .orbit-ring.r2 { width: 230px; height: 230px; }
 }
 
 /* ─── Trust strip ────────────────────────────────── */
@@ -689,6 +689,18 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
   }
   apply(isDark());
   btn.addEventListener('click',function(){apply(!isDark());});
+})();
+// Scale satellite orbit radii to viewport on mobile
+(function(){
+  function adjustOrbit(){
+    var mobile=window.innerWidth<=640;
+    var inner=mobile?'65px':'100px';
+    var outer=mobile?'115px':'170px';
+    document.querySelectorAll('.sat.s1,.sat.s4').forEach(function(el){el.style.setProperty('--r',inner);});
+    document.querySelectorAll('.sat.s2,.sat.s3').forEach(function(el){el.style.setProperty('--r',outer);});
+  }
+  adjustOrbit();
+  window.addEventListener('resize',adjustOrbit);
 })();
 </script>
 
