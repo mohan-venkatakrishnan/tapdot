@@ -214,6 +214,7 @@ h1 {
   box-shadow: var(--shadow-md);
   display: flex; align-items: center; justify-content: center;
   animation: orbit-spin linear infinite;
+  z-index: 4;
 }
 .sat img { width: 34px; height: 34px; border-radius: 10px; }
 .sat.s1 { animation-duration: 28s;  }
@@ -235,6 +236,8 @@ h1 {
   .orbit-wrap { height: 240px; }
   .orbit-ring.r1 { width: 130px; height: 130px; }
   .orbit-ring.r2 { width: 230px; height: 230px; }
+  .orbit-core { width: 64px; height: 64px; border-radius: 18px; }
+  .orbit-core img { width: 36px; height: 36px; }
 }
 
 /* ─── Trust strip ────────────────────────────────── */
@@ -481,7 +484,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="0">
           <div class="pcard-media">
-            <img src="floatdeck/img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" />
+            <img src="floatdeck/img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
@@ -500,7 +503,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="1">
           <div class="pcard-media">
-            <img src="tab-memory-manager/img/screenshot-1.png" alt="Tab Memory Manager popup showing memory per tab" loading="lazy" />
+            <img src="tab-memory-manager/img/screenshot-1.png" alt="Tab Memory Manager popup showing memory per tab" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
@@ -519,7 +522,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="2">
           <div class="pcard-media">
-            <img src="margin/img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" />
+            <img src="margin/img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
@@ -538,7 +541,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="3">
           <div class="pcard-media">
-            <img src="commentiq/store-assets/promo-1200x800.png" alt="CommentIQ — your YouTube comments, fully understood" loading="lazy" />
+            <img src="commentiq/store-assets/promo-1200x800.png" alt="CommentIQ — your YouTube comments, fully understood" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
@@ -703,6 +706,6 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
   window.addEventListener('resize',adjustOrbit);
 })();
 </script>
-
+<script src="assets/lightbox.js"></script>
 </body>
 </html>

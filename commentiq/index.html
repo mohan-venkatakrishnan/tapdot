@@ -236,7 +236,7 @@
 
   <!-- Marquee preview -->
   <div class="marquee-section wrap" data-reveal="up">
-    <img src="store-assets/marquee-promo.png" alt="CommentIQ — YouTube Comment Analyzer promotional image" class="marquee-img" />
+    <img src="store-assets/marquee-promo.png" alt="CommentIQ — YouTube Comment Analyzer promotional image" class="marquee-img" data-lightbox />
   </div>
 
   <!-- Features -->
@@ -414,7 +414,7 @@ SCREENSHOTS.forEach(function(s, i) {
   pane.className = 'ss-pane' + (i === 0 ? ' active' : '');
   pane.id = 'ss-pane-' + i;
   pane.innerHTML =
-    '<img src="' + s.img + '" alt="' + s.title + '" class="ss-img">' +
+    '<img src="' + s.img + '" alt="' + s.title + '" class="ss-img" data-lightbox>' +
     '<div class="ss-caption"><h3>' + s.title + '</h3><p>' + s.desc + '</p></div>';
   panesEl.appendChild(pane);
 });
@@ -434,6 +434,6 @@ document.querySelectorAll('[data-reveal]').forEach(function(el) {
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>
-
+<script src="../assets/lightbox.js"></script>
 </body>
 </html>

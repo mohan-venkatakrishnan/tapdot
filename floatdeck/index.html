@@ -237,8 +237,8 @@
   <!-- Screenshots -->
   <section class="wrap" style="padding-top:0">
     <div class="shots">
-      <img src="img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" />
-      <img src="img/screenshot-settings.png" alt="FloatDeck settings with live preview" loading="lazy" />
+      <img src="img/screenshot-menu.png" alt="FloatDeck radial menu open on a page" loading="lazy" data-lightbox />
+      <img src="img/screenshot-settings.png" alt="FloatDeck settings with live preview" loading="lazy" data-lightbox />
     </div>
   </section>
 
@@ -373,5 +373,6 @@ form.addEventListener('submit', function(e) {
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>
+<script src="../assets/lightbox.js"></script>
 </body>
 </html>

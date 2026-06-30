@@ -196,7 +196,7 @@
         <p class="hero-note"><b>No account.</b> No tracking. No ads.</p>
       </div>
       <div class="stage">
-        <img src="img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" />
+        <img src="img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" data-lightbox />
       </div>
     </div>
   </section>
@@ -220,8 +220,8 @@
   <!-- Screenshots -->
   <section class="wrap" style="padding-top:0">
     <div class="shots">
-      <img src="img/2-topics.png" alt="Margin topic picker with 25 curated topics" loading="lazy" />
-      <img src="img/3-themes.png" alt="Margin shown in five different themes" loading="lazy" />
+      <img src="img/2-topics.png" alt="Margin topic picker with 25 curated topics" loading="lazy" data-lightbox />
+      <img src="img/3-themes.png" alt="Margin shown in five different themes" loading="lazy" data-lightbox />
     </div>
   </section>
 
@@ -346,5 +346,6 @@ FEATURES.forEach(function(f) {
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>
+<script src="../assets/lightbox.js"></script>
 </body>
 </html>

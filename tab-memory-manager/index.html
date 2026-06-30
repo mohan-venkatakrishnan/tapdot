@@ -220,8 +220,8 @@
   <!-- Screenshots -->
   <section class="wrap" style="padding-top:0">
     <div class="shots">
-      <img src="img/screenshot-2.png" alt="Smart suggestions for idle memory-heavy tabs" loading="lazy" />
-      <img src="img/screenshot-1.png" alt="Full tab list with memory totals" loading="lazy" />
+      <img src="img/screenshot-2.png" alt="Smart suggestions for idle memory-heavy tabs" loading="lazy" data-lightbox />
+      <img src="img/screenshot-1.png" alt="Full tab list with memory totals" loading="lazy" data-lightbox />
     </div>
   </section>
 
@@ -282,5 +282,6 @@ FEATURES.forEach(function(f) {
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>
+<script src="../assets/lightbox.js"></script>
 </body>
 </html>
