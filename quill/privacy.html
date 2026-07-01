@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quill — Privacy Policy</title>
+<link rel="icon" href="img/icon.png" />
+<style>
+  :root{--bg:#fff;--fg:#13181a;--muted:#647079;--bd:#e5eae9;--accent:#0D9488}
+  @media (prefers-color-scheme: dark){:root{--bg:#0b0f0e;--fg:#eaf2f0;--muted:#93a49f;--bd:#233230;--accent:#4ED6C6}}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .crumb{background:color-mix(in srgb,var(--accent) 7%,transparent);border-bottom:1px solid var(--bd)}
+  .crumb .inner{max-width:760px;margin:0 auto;padding:0 22px;display:flex;align-items:center;height:34px;font-size:13px;color:var(--muted);gap:6px}
+  .crumb a{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--fg);text-decoration:none}
+  .crumb a:hover{color:var(--accent)}
+  .crumb img{width:16px;height:16px;border-radius:5px}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  a{color:var(--accent)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:8px;text-decoration:none;color:inherit}
+  .brand img{width:26px;height:26px;border-radius:7px}
+  h1{font-size:30px;margin:14px 0 4px}
+  .date{color:var(--muted);margin:0 0 28px}
+  h2{font-size:18px;margin:28px 0 8px}
+  ul{padding-left:20px}
+  code{background:color-mix(in srgb,var(--accent) 9%,transparent);padding:1px 6px;border-radius:5px;font-size:13.5px}
+  .muted{color:var(--muted)}
+  hr{border:0;border-top:1px solid var(--bd);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="crumb"><div class="inner"><a href="../index.html"><img src="../assets/img/tapdot-icon-256.png" alt="">tapdot</a><span>/ Quill</span></div></div>
+<div class="wrap">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="">Quill</a>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: 1 July 2026</p>
+
+  <p>Quill is built to be private by design. <strong>We do not collect, transmit, sell, or
+  share your data</strong> — no analytics, no tracking, no servers, no accounts.
+  Every writing tool runs locally in your browser using Chrome's built-in AI (Gemini Nano).</p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li><strong>No backend servers.</strong> Quill has no infrastructure of its own — your text never leaves your device to be processed.</li>
+    <li><strong>No personal data collection.</strong> We don't see the text you select, your results, the sites you visit, or anything you type.</li>
+    <li><strong>No analytics or tracking.</strong> No event logging, no telemetry, no crash reporting, no user profiling.</li>
+    <li><strong>No accounts required.</strong> Install and use immediately — there is no sign-up.</li>
+    <li><strong>100% on-device AI.</strong> Rewriting, proofreading, summarizing and every other tool run through Gemini Nano on your machine.</li>
+  </ul>
+
+  <h2>How Quill works with your text</h2>
+  <p>Quill only acts on text <strong>you</strong> choose. When you select text and run a tool — from the
+  right-click <strong>Quill</strong> menu, the optional floating pill, or by pasting into the side panel —
+  that text is sent to Chrome's on-device AI and the result is shown to you. Quill does not read, store,
+  or transmit page content in the background, and it never watches what you type.</p>
+  <p>To make this possible, the extension's content script runs on pages so it can read your current
+  selection and draw the results panel. It activates only when you invoke a Quill action.</p>
+
+  <h2>What is stored, and where</h2>
+  <p>Quill stores the following <strong>locally on your device only</strong>, using Chrome's <code>storage.local</code> API:</p>
+  <ul>
+    <li>Your theme preference (Glass, Light, or Dark)</li>
+    <li>Whether the floating pill is enabled</li>
+    <li>Any custom tones you create (name and instruction text) — Pro</li>
+    <li>Sites you've chosen to disable Quill on</li>
+    <li>Which on-device AI engines are available on your machine (to grey out unusable tools)</li>
+    <li>Your hourly usage count on the free plan, and your Pro status</li>
+  </ul>
+  <p>The text you rewrite, proofread or summarize is <strong>not</strong> stored — it's processed and shown,
+  then discarded. None of the data above is sent to any server or accessible to us or any third party.</p>
+
+  <h2>Network requests Quill makes</h2>
+  <ul>
+    <li><strong>Gemini Nano runs offline.</strong> The core features make <em>no</em> network requests — Quill doesn't even need the internet to rewrite, proofread or summarize.</li>
+    <li><strong>Pro license validation (only if you buy Pro):</strong> When you activate a license key, Quill sends <em>that key</em> to LemonSqueezy (<code>api.lemonsqueezy.com</code>) to verify it. This is the only external request Quill can make, it happens only when you activate or check a license, and it contains nothing about your text or browsing.</li>
+    <li><strong>No other requests.</strong> No analytics, no tracking pixels, no telemetry, no phone-home.</li>
+  </ul>
+
+  <h2>Payments (Pro)</h2>
+  <p>Quill Pro is sold through <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener">LemonSqueezy</a>,
+  our merchant of record. If you purchase Pro, your payment details are handled entirely by LemonSqueezy —
+  Quill never sees or stores your card information. Your license key is kept locally and used only for validation.</p>
+
+  <h2>Gemini Nano (Chrome's built-in AI)</h2>
+  <p>Quill uses Chrome's Writing Assistance APIs (Rewriter, Proofreader, Summarizer, Writer) and the
+  Prompt API to access Gemini Nano, Google's on-device language model. Gemini Nano runs locally on your
+  machine within Chrome's sandbox and does not send your text to Google's servers to produce results.
+  See <a href="https://developer.chrome.com/docs/ai/built-in" target="_blank" rel="noopener">Google's
+  Chrome documentation</a> for details on the built-in AI privacy model.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the "Last updated" date above will be revised. We'll notify early-access
+  testers of any material changes.</p>
+
+  <hr>
+  <p class="muted">Questions about privacy? Email <a href="mailto:rkmohanchn@gmail.com">rkmohanchn@gmail.com</a>.</p>
+</div>
+</body>
+</html>
