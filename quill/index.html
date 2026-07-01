@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<script>!function(){var t=localStorage.getItem('tapdot-theme');t&&document.documentElement.setAttribute('data-theme',t)}()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quill — AI Writing Tools for Chrome (On-Device)</title>
+<meta name="description" content="Apple-style AI writing tools for Chrome. Rewrite in any tone, proofread, summarize, and transform text on any page — privately, on-device with Gemini Nano. Coming to the Chrome Web Store soon." />
+<link rel="icon" href="img/icon.png" />
+<meta property="og:title" content="Quill — AI Writing Tools for Chrome" />
+<meta property="og:description" content="Write better, everywhere. Rewrite, proofread, summarize and transform text on any page — on-device and private." />
+<meta property="og:image" content="store-assets/marquee-promo.png" />
+<meta name="theme-color" content="#0D9488" />
+<style>
+  :root{
+    --bg:#ffffff;--fg:#13131a;--muted:#666670;--card:#f5f6f8;--card2:#ffffff;--bd:#e7e8ee;
+    --accent:#5b6cf0;--accent2:#8a6cf0;--q:#0D9488;--q2:#14b8a6;
+    --ease-out:cubic-bezier(.16,1,.3,1);
+  }
+  @media(prefers-color-scheme:dark){
+    :root{--bg:#0b0f0e;--fg:#eaf2f0;--muted:#93a49f;--card:#121816;--card2:#151d1b;--bd:#233230;--q:#4ED6C6;--q2:#5eead4;}
+  }
+  [data-theme="dark"]{--bg:#0b0f0e;--fg:#eaf2f0;--muted:#93a49f;--card:#121816;--card2:#151d1b;--bd:#233230;--q:#4ED6C6;--q2:#5eead4}
+  [data-theme="light"]{--bg:#ffffff;--fg:#13131a;--muted:#666670;--card:#f5f6f8;--card2:#ffffff;--bd:#e7e8ee;--q:#0D9488;--q2:#14b8a6}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .grad-text{background:linear-gradient(120deg,var(--q),var(--q2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ── Buttons ── */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:12px;
+    padding:13px 22px;cursor:pointer;border:0;font-size:15px;white-space:nowrap;transition:filter .15s,transform .15s,box-shadow .15s}
+  .btn.primary{background:linear-gradient(120deg,var(--q),var(--q2));color:#fff;box-shadow:0 8px 22px rgba(13,148,136,.30)}
+  .btn.primary:hover{filter:brightness(1.07);box-shadow:0 12px 28px rgba(13,148,136,.40);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--bd);color:var(--fg)}
+  .btn.ghost:hover{border-color:var(--q);color:var(--q)}
+
+  /* ── Scroll reveal ── */
+  [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
+  [data-reveal].visible{opacity:1;transform:none}
+  [data-delay="1"]{transition-delay:.12s}
+  [data-delay="2"]{transition-delay:.24s}
+  [data-delay="3"]{transition-delay:.36s}
+  [data-delay="4"]{transition-delay:.48s}
+  [data-delay="5"]{transition-delay:.60s}
+
+  /* ── Breadcrumb ── */
+  .crumb{background:color-mix(in srgb,var(--q) 5%,transparent);border-bottom:1px solid var(--bd)}
+  .crumb .wrap{display:flex;align-items:center;height:36px;font-size:13px;color:var(--muted);gap:7px}
+  .crumb a{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--fg);transition:color .15s}
+  .crumb a:hover{color:var(--q)}
+  .crumb img{width:16px;height:16px;border-radius:5px}
+  .crumb-sep{opacity:.4}
+
+  /* ── Header ── */
+  header{position:sticky;top:0;z-index:20;backdrop-filter:saturate(180%) blur(16px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--bd)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em;font-size:19px}
+  .brand img{width:30px;height:30px;border-radius:9px}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:14.5px;transition:color .15s}
+  .nav-links a:hover{color:var(--fg)}
+  @media(max-width:680px){.nav-links a{display:none}}
+  .theme-btn{width:36px;height:36px;border-radius:10px;background:transparent;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);transition:color .15s,border-color .15s;flex-shrink:0;padding:0}
+  .theme-btn:hover{color:var(--fg);border-color:var(--q)}
+  .theme-btn svg{width:16px;height:16px;pointer-events:none}
+  .dev-badge{font-size:12px;font-weight:700;
+    background:color-mix(in srgb,var(--q) 12%,transparent);color:var(--q);
+    border:1px solid color-mix(in srgb,var(--q) 28%,transparent);
+    padding:5px 12px;border-radius:999px;white-space:nowrap}
+
+  /* ── Hero ── */
+  .hero{position:relative;overflow:hidden;padding:84px 0 80px}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(ellipse 65% 55% at 15% 5%,color-mix(in srgb,var(--q) 14%,transparent),transparent),
+      radial-gradient(ellipse 55% 50% at 90% 0%,color-mix(in srgb,var(--q2) 12%,transparent),transparent);}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  @media(max-width:840px){.hero-inner{grid-template-columns:1fr;text-align:center}}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.025em;
+    color:var(--q);background:color-mix(in srgb,var(--q) 10%,transparent);
+    border:1px solid color-mix(in srgb,var(--q) 28%,transparent);
+    padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  .kicker svg{width:14px;height:14px}
+  h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.028em;margin:0 0 18px;font-weight:800}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 28px;line-height:1.72}
+  @media(max-width:840px){.lede{max-width:520px;margin-inline:auto}}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:840px){.cta-row{justify-content:center}}
+  .hero-note{margin-top:16px;font-size:13px;color:var(--muted)}
+  .hero-note b{color:var(--fg)}
+  @media(max-width:840px){.hero-note{text-align:center}}
+
+  /* Hero preview image */
+  .hero-preview{position:relative}
+  .hero-preview img{width:100%;border-radius:24px;box-shadow:0 32px 80px rgba(13,148,136,.24),0 0 0 1px rgba(13,148,136,.12)}
+  @media(max-width:840px){.hero-preview{display:none}}
+
+  /* ── Trust strip ── */
+  .trust{display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:center;padding:22px 0;
+    border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);color:var(--muted);font-size:14px}
+  .trust b{color:var(--fg)}
+
+  /* ── Section headings ── */
+  section{padding:80px 0}
+  .h2{font-size:clamp(26px,3.5vw,36px);letter-spacing:-.018em;margin:0 0 10px;text-align:center;font-weight:800}
+  .sub{color:var(--muted);text-align:center;max-width:560px;margin:0 auto 52px;font-size:16.5px;line-height:1.65}
+
+  /* ── Marquee preview ── */
+  .marquee-section{padding:0 0 72px}
+  .marquee-img{width:100%;border-radius:24px;box-shadow:0 24px 72px rgba(13,148,136,.16),0 0 0 1px var(--bd)}
+
+  /* ── Feature cards ── */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:840px){.feat-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.feat-grid{grid-template-columns:1fr}}
+  .feat-card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:26px;transition:transform .25s var(--ease-out),box-shadow .25s}
+  .feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(13,148,136,.12)}
+  .feat-card .ic{width:44px;height:44px;border-radius:13px;
+    background:color-mix(in srgb,var(--q) 12%,transparent);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--q)}
+  .feat-card .ic svg{width:22px;height:22px}
+  .feat-card h3{margin:0 0 6px;font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .feat-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+  .feat-card .pro-tag{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:700;
+    background:color-mix(in srgb,var(--q) 10%,transparent);color:var(--q);
+    border:1px solid color-mix(in srgb,var(--q) 24%,transparent);
+    padding:2px 8px;border-radius:999px}
+
+  /* ── Screenshots ── */
+  .ss-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+  .ss-tab{padding:9px 20px;border-radius:999px;border:1.5px solid var(--bd);background:transparent;
+    color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer;
+    transition:background .18s,color .18s,border-color .18s,box-shadow .18s;font-family:inherit}
+  .ss-tab:hover{border-color:var(--q);color:var(--q)}
+  .ss-tab.active{background:linear-gradient(120deg,var(--q),var(--q2));color:#fff;
+    border-color:transparent;box-shadow:0 6px 20px rgba(13,148,136,.30)}
+  .ss-pane{display:none}
+  .ss-pane.active{display:block}
+  .ss-img{width:100%;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,.16),0 0 0 1px var(--bd)}
+  .ss-caption{text-align:center;margin-top:24px}
+  .ss-caption h3{font-size:20px;font-weight:700;letter-spacing:-.015em;margin:0 0 8px}
+  .ss-caption p{color:var(--muted);font-size:15px;max-width:540px;margin:0 auto}
+
+  /* ── Privacy section ── */
+  .privacy-box{background:linear-gradient(135deg,var(--q),var(--q2));color:#fff;
+    border-radius:28px;padding:60px 48px;text-align:center;box-shadow:0 24px 60px rgba(13,148,136,.24)}
+  .privacy-box h2{font-size:30px;margin:0 0 12px;letter-spacing:-.02em;font-weight:800}
+  .privacy-box p{opacity:.92;max-width:560px;margin:0 auto 28px;font-size:16px;line-height:1.68}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);
+    padding:8px 16px;border-radius:999px;font-weight:600;font-size:13.5px}
+  @media(max-width:640px){.privacy-box{padding:44px 28px}}
+
+  /* ── Waitlist ── */
+  .waitlist-box{background:var(--card2);border:1px solid var(--bd);border-radius:28px;padding:60px 48px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .waitlist-box h2{font-size:30px;margin:0 0 12px;letter-spacing:-.02em;font-weight:800}
+  .waitlist-box>p{color:var(--muted);max-width:500px;margin:0 0 28px;font-size:16px;line-height:1.68}
+  .waitlist-note{margin-top:14px;font-size:13px;color:var(--muted)}
+  @media(max-width:640px){.waitlist-box{padding:44px 28px}}
+
+  /* ── Footer ── */
+  footer{border-top:1px solid var(--bd);padding:36px 0 28px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:14px}
+  .foot a{color:var(--muted);transition:color .15s}
+  .foot a:hover{color:var(--fg)}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div class="crumb">
+  <div class="wrap">
+    <a href="../index.html"><img src="../assets/img/tapdot-icon-256.png" alt="">tapdot</a>
+    <span class="crumb-sep">/</span>
+    <span>Quill</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">Quill</a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#waitlist">Early access</a>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <span class="dev-badge">In development</span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div data-reveal="up">
+          <span class="kicker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+            On-device AI writing tools
+          </span>
+        </div>
+        <h1 data-reveal="up" data-delay="1">Write better,<br><span class="grad-text">everywhere.</span></h1>
+        <p class="lede" data-reveal="up" data-delay="2">Quill brings Apple-style writing tools to every page. Select text anywhere in Chrome → rewrite in any tone, proofread, summarize, or transform it. All on-device. No servers. No accounts.</p>
+        <div class="cta-row" data-reveal="up" data-delay="3">
+          <a class="btn primary" href="mailto:rkmohanchn@gmail.com?subject=Quill%20Early%20Access">Join the early-access list</a>
+          <a class="btn ghost" href="#screenshots">See screenshots</a>
+        </div>
+        <p class="hero-note" data-reveal="up" data-delay="4"><b>Powered by Gemini Nano.</b> Everything runs locally in your browser.</p>
+      </div>
+      <div class="hero-preview" data-reveal="up" data-delay="2">
+        <img src="store-assets/small-promo.png" alt="Quill — write better, everywhere" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <div class="trust wrap">
+    <span><b>100% on-device</b> AI</span>
+    <span><b>Powered by</b> Gemini Nano</span>
+    <span><b>No</b> backend servers</span>
+    <span><b>No</b> analytics or tracking</span>
+    <span><b>No</b> account needed</span>
+  </div>
+
+  <!-- Marquee preview -->
+  <div class="marquee-section wrap" data-reveal="up">
+    <img src="store-assets/marquee-promo.png" alt="Quill — AI writing tools promotional image" class="marquee-img" data-lightbox />
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <h2 class="h2" data-reveal="up">Every writing tool, one right-click away</h2>
+      <p class="sub" data-reveal="up" data-delay="1">Rewrite, proofread, summarize and transform — powered by local AI, with nothing leaving your browser.</p>
+      <div class="feat-grid" id="feat-grid"></div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section id="screenshots">
+    <div class="wrap">
+      <h2 class="h2" data-reveal="up">See it in action</h2>
+      <p class="sub" data-reveal="up" data-delay="1">Five ways to use Quill. All powered by on-device Gemini Nano.</p>
+      <div data-reveal="up" data-delay="2">
+        <div class="ss-tabs" id="ss-tabs"></div>
+        <div id="ss-panes"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="privacy-box" data-reveal="up">
+        <h2>Private by design</h2>
+        <p>Quill has no backend, no servers, no analytics, and no accounts. Chrome's built-in Gemini Nano runs every tool locally — your text is processed on your device and never sent anywhere. It doesn't even need the internet.</p>
+        <div class="pill-row">
+          <span class="pill">100% local</span>
+          <span class="pill">No servers</span>
+          <span class="pill">No tracking</span>
+          <span class="pill">Your text, your device</span>
+          <span class="pill">No account needed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section id="waitlist">
+    <div class="wrap">
+      <div class="waitlist-box" data-reveal="up">
+        <h2>Be first to try it</h2>
+        <p>Quill is in active development. Join the early-access list to get beta testing invites, exclusive updates, and lifetime Pro pricing at launch.</p>
+        <a class="btn primary" href="mailto:rkmohanchn@gmail.com?subject=Quill%20Early%20Access&body=I%27d%20like%20to%20be%20notified%20when%20Quill%20is%20ready%20for%20testing.">Notify me when ready</a>
+        <p class="waitlist-note">Just send an email — no forms, no signups, no spam.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Quill &nbsp;·&nbsp; a <a href="../index.html">tapdot</a> product</span>
+    <div class="foot-links">
+      <a href="mailto:rkmohanchn@gmail.com">Contact</a>
+      <a href="../index.html">← All extensions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Feature cards ── */
+var FEATURES = [
+  {
+    icon: '<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/>',
+    title: 'Rewrite in any tone',
+    desc: 'Turn any selection Friendly, Professional or Concise — free and unlimited. Unlock 20 more tones (Confident, Persuasive, Empathetic…) plus your own custom tones with Pro.',
+    pro: true
+  },
+  {
+    icon: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+    title: 'Proofread in one click',
+    desc: 'Fix grammar, spelling and clarity instantly. Quill shows the corrected text plus a clear list of every change — ready to copy.',
+    pro: false
+  },
+  {
+    icon: '<line x1="21" y1="6" x2="3" y2="6"/><line x1="15" y1="12" x2="3" y2="12"/><line x1="17" y1="18" x2="3" y2="18"/>',
+    title: 'Summaries &amp; key points',
+    desc: 'Condense any article, thread or document into a tight summary — or pull the essential points as a clean bullet list. Toggle between the two.',
+    pro: false
+  },
+  {
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="12" y1="3" x2="12" y2="21"/>',
+    title: 'Lists &amp; tables',
+    desc: 'Turn messy prose into a structured list or a Markdown table you can drop straight into your notes, docs or a spreadsheet.',
+    pro: false
+  },
+  {
+    icon: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+    title: 'Compose from a prompt',
+    desc: 'Describe what you want — “reply thanking them and proposing Tuesday” — and Quill drafts it from your selection, in the tone you choose.',
+    pro: false
+  },
+  {
+    icon: '<path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>',
+    title: 'Right-click or side panel',
+    desc: 'The Quill menu is a right-click away on any page. A built-in side panel covers Google Docs, PDFs and Chrome pages where selection can’t be read.',
+    pro: false
+  }
+];
+
+function svg(path) {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
+}
+
+var grid = document.getElementById('feat-grid');
+FEATURES.forEach(function(f, i) {
+  var card = document.createElement('div');
+  card.className = 'feat-card';
+  card.setAttribute('data-reveal', 'up');
+  card.setAttribute('data-delay', String((i % 3) + 1));
+  card.innerHTML =
+    '<div class="ic">' + svg(f.icon) + '</div>' +
+    '<h3>' + f.title + '</h3>' +
+    '<p>' + f.desc + '</p>' +
+    (f.pro ? '<span class="pro-tag">Free + Pro</span>' : '');
+  grid.appendChild(card);
+});
+
+/* ── Screenshots ── */
+var SCREENSHOTS = [
+  {
+    img: 'store-assets/ss1-tones.png',
+    label: 'Rewrite',
+    title: 'Rewrite in any tone',
+    desc: 'Select text, pick a tone, and Quill returns polished variants you can copy in one click. Three tones free, twenty more with Pro.'
+  },
+  {
+    img: 'store-assets/ss2-proofread.png',
+    label: 'Proofread',
+    title: 'Proofread in one click',
+    desc: 'Catch every grammar and spelling slip. Quill shows the corrected text plus a list of exactly what changed.'
+  },
+  {
+    img: 'store-assets/ss3-summary.png',
+    label: 'Summarize',
+    title: 'Summaries &amp; key points',
+    desc: 'Turn long articles and threads into a tight summary — or a clean list of the key points. Toggle between the two views.'
+  },
+  {
+    img: 'store-assets/ss4-menu.png',
+    label: 'Right-click',
+    title: 'Right-click, anywhere',
+    desc: 'The Quill menu is always a right-click away — every tool, plus the full tone library, on any text you select.'
+  },
+  {
+    img: 'store-assets/ss5-sidepanel.png',
+    label: 'Side panel',
+    title: 'Works everywhere — in any theme',
+    desc: 'A side panel for Google Docs, PDFs and Chrome pages where selection can’t be read. Paste, run any tool, in Glass, Light or Dark.'
+  }
+];
+
+var tabsEl = document.getElementById('ss-tabs');
+var panesEl = document.getElementById('ss-panes');
+
+SCREENSHOTS.forEach(function(s, i) {
+  var tab = document.createElement('button');
+  tab.className = 'ss-tab' + (i === 0 ? ' active' : '');
+  tab.innerHTML = s.label;
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.ss-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.ss-pane').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('ss-pane-' + i).classList.add('active');
+  });
+  tabsEl.appendChild(tab);
+
+  var pane = document.createElement('div');
+  pane.className = 'ss-pane' + (i === 0 ? ' active' : '');
+  pane.id = 'ss-pane-' + i;
+  pane.innerHTML =
+    '<img src="' + s.img + '" alt="' + s.title + '" class="ss-img" data-lightbox>' +
+    '<div class="ss-caption"><h3>' + s.title + '</h3><p>' + s.desc + '</p></div>';
+  panesEl.appendChild(pane);
+});
+
+/* ── Scroll reveal ── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+document.querySelectorAll('[data-reveal]').forEach(function(el) {
+  observer.observe(el);
+});
+(function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
+</script>
+<script src="../assets/lightbox.js"></script>
+</body>
+</html>
