@@ -109,11 +109,20 @@
   .feat-card h3{margin:0 0 6px;font-size:16px;font-weight:700;letter-spacing:-.01em}
   .feat-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
 
-  /* ── Screenshots ── */
-  .shots{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media(max-width:680px){.shots{grid-template-columns:1fr}}
-  .shots img{width:100%;border-radius:16px;border:1px solid var(--bd);display:block;
-    box-shadow:0 12px 36px rgba(0,0,0,.08)}
+  /* ── Screenshots (tabbed gallery) ── */
+  .ss-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+  .ss-tab{padding:9px 20px;border-radius:999px;border:1.5px solid var(--bd);background:transparent;
+    color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer;
+    transition:background .18s,color .18s,border-color .18s,box-shadow .18s;font-family:inherit}
+  .ss-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .ss-tab.active{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;
+    border-color:transparent;box-shadow:0 6px 20px rgba(99,102,241,.28)}
+  .ss-pane{display:none}
+  .ss-pane.active{display:block}
+  .ss-img{width:100%;border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,.16),0 0 0 1px var(--bd)}
+  .ss-caption{text-align:center;margin-top:24px}
+  .ss-caption h3{font-size:20px;font-weight:700;letter-spacing:-.015em;margin:0 0 8px}
+  .ss-caption p{color:var(--muted);font-size:15px;max-width:540px;margin:0 auto}
 
   /* ── Pricing ── */
   .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
@@ -196,7 +205,7 @@
         <p class="hero-note"><b>No account.</b> No tracking. No ads.</p>
       </div>
       <div class="stage">
-        <img src="img/1-feed.png" alt="Margin side panel showing a news card" loading="lazy" data-lightbox />
+        <img src="store-assets/ss1-feed.png" alt="Margin side panel showing a news card" loading="lazy" data-lightbox />
       </div>
     </div>
   </section>
@@ -219,10 +228,10 @@
 
   <!-- Screenshots -->
   <section class="wrap" style="padding-top:0">
-    <div class="shots">
-      <img src="img/2-topics.png" alt="Margin topic picker with 25 curated topics" loading="lazy" data-lightbox />
-      <img src="img/3-themes.png" alt="Margin shown in five different themes" loading="lazy" data-lightbox />
-    </div>
+    <h2 class="h2">See it in action</h2>
+    <p class="sub">Five views from the side panel — all on-device, all private.</p>
+    <div class="ss-tabs" id="ss-tabs"></div>
+    <div id="ss-panes"></div>
   </section>
 
   <!-- Pricing -->
@@ -343,6 +352,35 @@ FEATURES.forEach(function(f) {
   d.className = 'feat-card';
   d.innerHTML = '<div class="ic">' + svg(f[0]) + '</div><h3>' + f[1] + '</h3><p>' + f[2] + '</p>';
   g.appendChild(d);
+});
+
+/* ── Screenshots gallery ── */
+var SCREENSHOTS = [
+  { img: 'store-assets/ss1-feed.png',     label: 'Feed',      title: 'Your day’s news, one card at a time', desc: 'Swipe through an InShorts-style stack of short cards — image, headline, summary and source — right in the side panel. Tap Read for the full article.' },
+  { img: 'store-assets/ss2-topics.png',   label: 'Topics',    title: '25 curated topics', desc: 'Pick the topics that matter — World, Tech, AI, Science and more, backed by ~100 trusted publisher feeds. Three free, unlimited on Plus.' },
+  { img: 'store-assets/ss3-summary.png',  label: 'Summaries', title: 'On-device AI summaries', desc: 'Each story is condensed to the essentials by Chrome’s built-in Gemini Nano — locally, with nothing sent to any server.' },
+  { img: 'store-assets/ss4-insights.png', label: 'Insights',  title: 'Your reading dashboard', desc: 'See how much you’ve read, your streak, time saved, and the topics you follow most — a personal analytics view on Plus.' },
+  { img: 'store-assets/ss5-themes.png',   label: 'Themes',    title: 'Five themes, your way', desc: 'Light, Dark, Sepia, Slate and Midnight — plus custom colors on Plus. Margin blends into whatever you’re reading.' }
+];
+var ssTabs = document.getElementById('ss-tabs');
+var ssPanes = document.getElementById('ss-panes');
+SCREENSHOTS.forEach(function(s, i) {
+  var tab = document.createElement('button');
+  tab.className = 'ss-tab' + (i === 0 ? ' active' : '');
+  tab.textContent = s.label;
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.ss-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.ss-pane').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('ss-pane-' + i).classList.add('active');
+  });
+  ssTabs.appendChild(tab);
+  var pane = document.createElement('div');
+  pane.className = 'ss-pane' + (i === 0 ? ' active' : '');
+  pane.id = 'ss-pane-' + i;
+  pane.innerHTML = '<img src="' + s.img + '" alt="' + s.title + '" class="ss-img" data-lightbox>' +
+    '<div class="ss-caption"><h3>' + s.title + '</h3><p>' + s.desc + '</p></div>';
+  ssPanes.appendChild(pane);
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>

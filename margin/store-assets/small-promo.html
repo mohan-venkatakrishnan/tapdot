@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:440px;height:280px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 90% 80% at 50% -20%,rgba(99,102,241,.42) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 60% at 100% 100%,rgba(168,85,247,.3) 0%,transparent 62%),
+  linear-gradient(160deg,#0b0a1e 0%,#111033 55%,#0a081c 100%)}
+.grid{position:absolute;inset:0;opacity:.4;
+  background-image:linear-gradient(rgba(129,140,248,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(129,140,248,.06) 1px,transparent 1px);
+  background-size:30px 30px;mask:radial-gradient(ellipse 70% 70% at 40% 40%,#000,transparent 80%)}
+.wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 34px}
+.mark{width:60px;height:60px;border-radius:18px;overflow:hidden;margin-bottom:18px;
+  box-shadow:0 14px 34px rgba(99,102,241,.55),inset 0 1px 0 rgba(255,255,255,.3)}
+.mark img{width:100%;height:100%;display:block}
+h1{font-size:31px;font-weight:800;letter-spacing:-1.2px;line-height:1.08;color:#f3f3fd}
+h1 .g{background:linear-gradient(100deg,#a5b4fc,#d8b4fe);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#9a9ac4;font-size:14px;line-height:1.5;margin-top:12px;max-width:340px}
+.pills{margin-top:18px;display:flex;gap:7px;flex-wrap:wrap}
+.pills span{background:rgba(129,140,248,.1);color:#b7bdf5;border:1px solid rgba(129,140,248,.28);border-radius:100px;padding:5px 12px;font-size:11.5px;font-weight:600}
+</style></head>
+<body>
+<div class="bg"></div><div class="grid"></div>
+<div class="wrap">
+  <div class="mark"><img src="/img/icon.png"></div>
+  <h1>Your day's news,<br><span class="g">one card at a time.</span></h1>
+  <div class="sub">25 topics, summarized on-device, in your side panel.</div>
+  <div class="pills"><span>Topics</span><span>Summaries</span><span>Themes</span></div>
+</div>
+</body></html>

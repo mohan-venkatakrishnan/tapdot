@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+s{text-decoration:none}
+html,body{width:1400px;height:560px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 90% at 78% 40%,rgba(99,102,241,.36) 0%,transparent 58%),
+  radial-gradient(ellipse 50% 70% at 96% 96%,rgba(168,85,247,.28) 0%,transparent 60%),
+  linear-gradient(150deg,#0a0a1c 0%,#111033 46%,#0a081c 100%)}
+.grid{position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(129,140,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(129,140,248,.05) 1px,transparent 1px);
+  background-size:44px 44px;mask:radial-gradient(ellipse 60% 80% at 30% 50%,#000,transparent 75%)}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:0 88px;gap:40px}
+.col{flex:0 0 540px}
+.chip{display:flex;align-items:center;gap:11px;margin-bottom:28px}
+.chip .mark{width:44px;height:44px;border-radius:13px;overflow:hidden;box-shadow:0 10px 26px rgba(99,102,241,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.chip .mark img{width:100%;height:100%;display:block}
+.chip .nm{font-size:24px;font-weight:800;letter-spacing:-.02em;color:#f3f3fd}
+.chip .tg{margin-left:4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a5b4fc;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.3);padding:5px 11px;border-radius:999px}
+.h{font-size:56px;font-weight:800;letter-spacing:-2.3px;line-height:1.05;color:#f3f3fd}
+.h .g{background:linear-gradient(100deg,#a5b4fc,#d8b4fe);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#9a9ac4;font-size:18px;line-height:1.6;margin-top:20px;max-width:470px}
+.tags{margin-top:26px;display:flex;gap:9px;flex-wrap:wrap}
+.tags span{background:rgba(129,140,248,.1);color:#b7bdf5;border:1px solid rgba(129,140,248,.26);border-radius:100px;padding:7px 15px;font-size:13px;font-weight:500}
+.fan{flex:1;position:relative;height:100%}
+.gcard{position:absolute;width:330px;border-radius:18px;overflow:hidden;
+  background:rgba(24,22,54,.64);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.13)}
+.gcard .im{width:100%;height:150px;background:linear-gradient(135deg,#2b3563,#6d5aa8)}
+.gcard .bd{padding:15px 16px 16px}
+.gcard .chips{display:flex;gap:6px;margin-bottom:9px}
+.gcard .chips b{font-style:normal;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:999px;color:#c7cbf5;background:rgba(129,140,248,.16)}
+.gcard .chips b.on{background:#e7e8fb;color:#1a1830}
+.gcard .hl{font-size:18px;font-weight:700;line-height:1.24;color:#f0f0fb;font-family:Georgia,serif;margin-bottom:8px}
+.gcard .sm{font-size:12px;line-height:1.5;color:#9a9ac4}
+.gcard .ft{margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:10.5px;color:#8484b0}
+.gcard .ft b{color:#a5b4fc;font-weight:700;float:right}
+.back{top:58px;right:34px;transform:rotate(5deg);z-index:1}
+.front{top:126px;right:250px;transform:rotate(-5deg);z-index:2}
+</style></head>
+<body>
+<div class="bg"></div><div class="grid"></div>
+<div class="wrap">
+  <div class="col">
+    <div class="chip">
+      <div class="mark"><img src="/img/icon.png"></div>
+      <span class="nm">Margin</span><span class="tg">Side panel</span>
+    </div>
+    <div class="h">Your day's news,<br><span class="g">one card at a time.</span></div>
+    <div class="sub">25 curated topics, summarized on-device and served as swipeable cards — right in your browser side panel. No feeds to doom-scroll.</div>
+    <div class="tags">
+      <span>📰 25 topics</span>
+      <span>✨ AI summaries</span>
+      <span>🎨 5 themes</span>
+      <span>🔒 Private</span>
+    </div>
+  </div>
+  <div class="fan">
+    <div class="gcard back">
+      <div class="im"></div>
+      <div class="bd">
+        <div class="chips"><b class="on">All</b><b>Science</b></div>
+        <div class="hl">Webb telescope spots its oldest galaxy yet</div>
+        <div class="sm">The faint smudge of light dates to just 300 million years after the Big Bang…</div>
+        <div class="ft">The Guardian · 1h <b>Read ↗</b></div>
+      </div>
+    </div>
+    <div class="gcard front">
+      <div class="im"></div>
+      <div class="bd">
+        <div class="chips"><b class="on">All</b><b>Tech</b><b>AI</b></div>
+        <div class="hl">On-device AI is reshaping the browser</div>
+        <div class="sm">A new wave of models runs entirely on your machine — private, fast, working offline…</div>
+        <div class="ft">Wired · 9m <b>Read ↗</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

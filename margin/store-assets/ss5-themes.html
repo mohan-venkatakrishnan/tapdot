@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="_base.css"><style>
+.fan{position:absolute;left:0;right:0;top:196px;display:flex;justify-content:center;align-items:flex-start}
+.tc{width:262px;border-radius:20px;overflow:hidden;margin:0 -22px;flex-shrink:0;
+  background:var(--cbg);border:1px solid var(--cbd);
+  box-shadow:0 40px 90px rgba(25,20,60,.26),0 0 0 1px rgba(25,20,60,.04)}
+.tc.r1{transform:rotate(-12deg) translateY(40px)}
+.tc.r2{transform:rotate(-6deg) translateY(12px);z-index:2}
+.tc.r3{transform:rotate(0deg) translateY(0);z-index:3}
+.tc.r4{transform:rotate(6deg) translateY(12px);z-index:2}
+.tc.r5{transform:rotate(12deg) translateY(40px)}
+.t-light{--cbg:#f7f7f8;--csurf:#fff;--ctp:#18181b;--cts:#6b7280;--cac:#4f46e5;--cbd:#e6e6e9}
+.t-dark{--cbg:#0e0f12;--csurf:#17181c;--ctp:#f3f4f6;--cts:#9aa0aa;--cac:#818cf8;--cbd:#26282f}
+.t-sepia{--cbg:#f3ead9;--csurf:#fbf4e6;--ctp:#3a2f23;--cts:#7c6a54;--cac:#b4540a;--cbd:#e3d4ba}
+.t-slate{--cbg:#1b1f27;--csurf:#232834;--ctp:#e8ecf3;--cts:#9aa6b8;--cac:#38bdf8;--cbd:#323a48}
+.t-midnight{--cbg:#05060a;--csurf:#0c0e16;--ctp:#e6e8f0;--cts:#8b90a8;--cac:#a78bfa;--cbd:#1b1f30}
+.tch{display:flex;align-items:center;gap:7px;padding:13px 14px;border-bottom:1px solid var(--cbd)}
+.tch img{width:17px;height:17px;border-radius:5px}
+.tch .nm{font-size:13.5px;font-weight:800;letter-spacing:-.02em;color:var(--ctp)}
+.tcbody{padding:13px}
+.mini{background:var(--csurf);border:1px solid var(--cbd);border-radius:12px;overflow:hidden}
+.mini .mi{height:78px;background:linear-gradient(135deg,#26324f,#5a4c8f)}
+.mini .mb{padding:11px 12px 12px}
+.mini .mhl{font-size:14px;font-weight:700;line-height:1.24;color:var(--ctp);margin-bottom:7px;font-family:Georgia,serif}
+.mini .msm{font-size:11px;line-height:1.5;color:var(--cts)}
+.mini .mft{margin-top:10px;padding-top:9px;border-top:1px solid var(--cbd);display:flex;align-items:center}
+.mini .msrc{font-size:9.5px;color:var(--cts)}
+.mini .mrd{margin-left:auto;font-size:10px;font-weight:700;color:var(--cac)}
+.tname{padding:11px;text-align:center;font-size:12px;font-weight:700;color:var(--cac);letter-spacing:.02em;border-top:1px solid var(--cbd)}
+</style></head>
+<body>
+<div class="scene">
+  <div class="chip">
+    <div class="mark"><img src="/img/icon.png"></div>
+    <span class="name">Margin</span><span class="sep">/</span><span class="act">Five themes</span>
+  </div>
+  <div class="fan">
+    <div class="tc r1 t-light">
+      <div class="tch"><img src="/img/icon.png"><span class="nm">Margin</span></div>
+      <div class="tcbody"><div class="mini"><div class="mi"></div><div class="mb">
+        <div class="mhl">On-device AI reshapes the browser</div>
+        <div class="msm">Models now run entirely on your machine — private, fast, offline.</div>
+        <div class="mft"><span class="msrc">Wired · 9m</span><span class="mrd">Read</span></div></div></div></div>
+      <div class="tname">Light</div>
+    </div>
+    <div class="tc r2 t-dark">
+      <div class="tch"><img src="/img/icon.png"><span class="nm">Margin</span></div>
+      <div class="tcbody"><div class="mini"><div class="mi"></div><div class="mb">
+        <div class="mhl">On-device AI reshapes the browser</div>
+        <div class="msm">Models now run entirely on your machine — private, fast, offline.</div>
+        <div class="mft"><span class="msrc">Wired · 9m</span><span class="mrd">Read</span></div></div></div></div>
+      <div class="tname">Dark</div>
+    </div>
+    <div class="tc r3 t-sepia">
+      <div class="tch"><img src="/img/icon.png"><span class="nm">Margin</span></div>
+      <div class="tcbody"><div class="mini"><div class="mi"></div><div class="mb">
+        <div class="mhl">On-device AI reshapes the browser</div>
+        <div class="msm">Models now run entirely on your machine — private, fast, offline.</div>
+        <div class="mft"><span class="msrc">Wired · 9m</span><span class="mrd">Read</span></div></div></div></div>
+      <div class="tname">Sepia</div>
+    </div>
+    <div class="tc r4 t-slate">
+      <div class="tch"><img src="/img/icon.png"><span class="nm">Margin</span></div>
+      <div class="tcbody"><div class="mini"><div class="mi"></div><div class="mb">
+        <div class="mhl">On-device AI reshapes the browser</div>
+        <div class="msm">Models now run entirely on your machine — private, fast, offline.</div>
+        <div class="mft"><span class="msrc">Wired · 9m</span><span class="mrd">Read</span></div></div></div></div>
+      <div class="tname">Slate</div>
+    </div>
+    <div class="tc r5 t-midnight">
+      <div class="tch"><img src="/img/icon.png"><span class="nm">Margin</span></div>
+      <div class="tcbody"><div class="mini"><div class="mi"></div><div class="mb">
+        <div class="mhl">On-device AI reshapes the browser</div>
+        <div class="msm">Models now run entirely on your machine — private, fast, offline.</div>
+        <div class="mft"><span class="msrc">Wired · 9m</span><span class="mrd">Read</span></div></div></div></div>
+      <div class="tname">Midnight</div>
+    </div>
+  </div>
+</div>
+</body></html>

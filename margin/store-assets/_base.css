@@ -1,0 +1,112 @@
+/* Shared visual language for Margin store screenshots (1280x800).
+   Indigo brand; a webpage with the Margin news side panel docked right. */
+*{margin:0;padding:0;box-sizing:border-box}
+s{text-decoration:none}
+html,body{width:1280px;height:800px;overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.serif{font-family:Georgia,'Times New Roman',serif}
+.scene{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 55% at 14% 6%,rgba(99,102,241,.16),transparent 60%),
+    radial-gradient(ellipse 55% 60% at 92% 100%,rgba(168,85,247,.18),transparent 62%),
+    linear-gradient(140deg,#eef0fd 0%,#f5f5fb 46%,#efeefb 100%)}
+/* Brand chip */
+.chip{position:absolute;top:44px;left:56px;display:flex;align-items:center;gap:10px;z-index:5}
+.chip .mark{width:38px;height:38px;border-radius:11px;overflow:hidden;
+  box-shadow:0 8px 20px rgba(99,102,241,.32),inset 0 1px 0 rgba(255,255,255,.3)}
+.chip .mark img{width:100%;height:100%;display:block}
+.chip .name{font-size:19px;font-weight:800;letter-spacing:-.02em;color:#1e1b3a}
+.chip .sep{color:#b3b0d8;font-weight:600;font-size:16px}
+.chip .act{font-size:15px;font-weight:600;color:#6366f1;
+  background:rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.22);
+  padding:5px 13px;border-radius:999px}
+/* Browser window */
+.win{position:absolute;left:44px;top:140px;width:1192px;height:632px;background:#fff;border-radius:20px;overflow:hidden;
+  box-shadow:0 40px 90px rgba(30,25,70,.20),0 4px 14px rgba(30,25,70,.08),0 0 0 1px rgba(30,20,60,.05)}
+.win-bar{height:46px;background:#f6f6f8;border-bottom:1px solid #ececef;
+  display:flex;align-items:center;padding:0 16px;gap:8px}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot.r{background:#f0645a}.dot.y{background:#f4bd4e}.dot.g{background:#54c25b}
+.win-url{margin-left:14px;flex:1;height:28px;background:#fff;border:1px solid #e7e7ea;
+  border-radius:8px;display:flex;align-items:center;padding:0 12px;
+  font-size:12.5px;color:#8a8a92;gap:7px;max-width:440px}
+.win-url svg{width:12px;height:12px;stroke:#b0b0b8;fill:none;stroke-width:2}
+.wbody{display:flex;height:calc(100% - 46px)}
+
+/* ── generic webpage (left) ── */
+.page{flex:1;padding:34px 40px;overflow:hidden;background:#fff}
+.page .ph{width:62%;height:22px;border-radius:6px;background:#ececf1;margin-bottom:14px}
+.page .ph.w2{width:80%}
+.page .pimg{width:100%;aspect-ratio:16/9;border-radius:14px;margin:8px 0 20px;
+  background:linear-gradient(135deg,#e7e9f6,#eef0fb 60%,#f3eefb)}
+.page .pl{height:11px;border-radius:5px;background:#eff0f4;margin-bottom:11px}
+.page .pl.s1{width:96%}.page .pl.s2{width:99%}.page .pl.s3{width:88%}.page .pl.s4{width:70%}
+.page .pgap{height:16px}
+
+/* ── Margin side panel dock (right) ── */
+:root{--bg:#f7f7f8;--surface:#fff;--s2:#f1f1f3;--tp:#18181b;--ts:#6b7280;--tt:#9ca3af;
+  --bd:#e6e6e9;--bds:#d6d6db;--ac:#4f46e5;--acw:#eef0fd}
+.dock{width:436px;flex-shrink:0;border-left:1px solid #ececef;background:var(--bg);
+  display:flex;flex-direction:column;overflow:hidden}
+.mh{display:flex;align-items:center;gap:9px;padding:15px 16px 13px;border-bottom:1px solid var(--bd);background:var(--surface)}
+.mh .lg{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--tp)}
+.mh .lg img{width:20px;height:20px;border-radius:6px}
+.mh .ic{margin-left:auto;display:flex;gap:12px;color:var(--tt)}
+.mh .ic svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mh .ic svg:last-child{color:var(--ac)}
+.chips{display:flex;gap:8px;padding:13px 16px;border-bottom:1px solid var(--bd);background:var(--surface)}
+.chips b{font-size:13px;font-weight:600;padding:7px 15px;border-radius:999px;color:var(--ts);
+  background:var(--s2);border:1px solid var(--bd)}
+.chips b.on{background:#1c1c22;color:#fff;border-color:transparent}
+.mbody{flex:1;padding:16px;overflow:hidden}
+
+/* News card */
+.ncard{background:var(--surface);border:1px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:var(--shadow,0 6px 20px rgba(30,25,70,.06))}
+.ncard .img{width:100%;height:150px;background:linear-gradient(135deg,#26324f,#3b4b7a 55%,#6d5aa8)}
+.ncard .body{padding:20px 20px 16px}
+.ncard .hl{font-size:21px;font-weight:700;line-height:1.22;letter-spacing:-.01em;color:var(--tp);margin-bottom:12px}
+.ncard .sm{font-size:14.5px;line-height:1.6;color:var(--ts)}
+.ncard .ft{display:flex;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--bd)}
+.ncard .src{font-size:12.5px;color:var(--tt)}
+.ncard .rd{margin-left:auto;font-size:13px;font-weight:700;color:var(--ac);display:flex;align-items:center;gap:5px}
+.ncard .rd svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2}
+.nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:13px;color:var(--tt);font-size:13px;font-weight:600;border-top:1px solid var(--bd);background:var(--surface)}
+.nav svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.aibadge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--ac);
+  background:var(--acw);border:1px solid rgba(79,70,229,.2);padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.aibadge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
+.kp{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.kp li{display:flex;gap:9px;font-size:14px;line-height:1.5;color:var(--tp)}
+.kp .b{flex-shrink:0;width:17px;height:17px;border-radius:5px;margin-top:1px;background:var(--acw);
+  display:flex;align-items:center;justify-content:center}
+.kp .b svg{width:11px;height:11px;stroke:var(--ac);fill:none;stroke-width:3}
+
+/* Topics picker */
+.thead{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--tp);margin-bottom:6px}
+.tsub{font-size:13px;color:var(--ts);margin-bottom:16px;line-height:1.5}
+.tsub b{color:var(--tp)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topic{border:1.5px solid var(--bd);border-radius:12px;padding:12px 13px;background:var(--surface);position:relative}
+.topic .n{font-size:14px;font-weight:700;color:var(--tp);margin-bottom:2px}
+.topic .d{font-size:11.5px;color:var(--tt)}
+.topic.on{border-color:var(--ac);background:var(--acw)}
+.topic.on::after{content:"";position:absolute;top:12px;right:12px;width:14px;height:14px;border-radius:50%;
+  background:var(--ac);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
+.tbar{display:flex;align-items:center;padding:14px 16px;border-top:1px solid var(--bd);background:var(--surface)}
+.tbar .left{font-size:13px;color:var(--ts)}
+.tbar .go{margin-left:auto;background:var(--ac);color:#fff;font-size:13px;font-weight:700;padding:9px 18px;border-radius:10px}
+
+/* Insights dashboard */
+.istat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.istat .s{background:var(--surface);border:1px solid var(--bd);border-radius:13px;padding:14px}
+.istat .s b{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--tp);line-height:1;display:block}
+.istat .s span{font-size:12px;color:var(--ts);margin-top:4px;display:block}
+.istat .s b .u{font-size:14px;color:var(--ts);font-weight:600}
+.ibars{background:var(--surface);border:1px solid var(--bd);border-radius:13px;padding:15px}
+.ibars .t{font-size:13px;font-weight:700;color:var(--tp);margin-bottom:13px}
+.bar{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.bar .nm{font-size:12.5px;color:var(--tp);width:74px;flex-shrink:0}
+.bar .tr{flex:1;height:9px;border-radius:5px;background:var(--s2);overflow:hidden}
+.bar .fl{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#6366f1,#a855f7)}
+.bar .v{font-size:11.5px;color:var(--ts);width:26px;text-align:right}
