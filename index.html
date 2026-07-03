@@ -48,11 +48,11 @@
   --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
 }
 [data-theme="light"] {
-  --bg: #ffffff; --fg: #13131a; --muted: #6b6b77;
-  --card: #f5f6f8; --card2: #ffffff; --bd: #e7e8ee;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
-  --shadow-md: 0 8px 28px rgba(76,60,170,.12);
-  --shadow-lg: 0 24px 64px rgba(76,60,170,.14);
+  --bg: #f3f4f8; --fg: #13131a; --muted: #6b6b77;
+  --card: #ffffff; --card2: #f3f4f8; --bd: #d4d5e0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.07);
+  --shadow-md: 0 8px 28px rgba(76,60,170,.13);
+  --shadow-lg: 0 24px 64px rgba(76,60,170,.16);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -216,7 +216,9 @@ h1 {
   animation: orbit-spin linear infinite;
   z-index: 4;
 }
-.sat img { width: 34px; height: 34px; border-radius: 10px; }
+.sat img { width: 34px; height: 34px; border-radius: 10px; display: block; }
+.sat a { display: block; border-radius: 10px; outline-offset: 3px; }
+.sat a:hover img { transform: scale(1.15); transition: transform .2s; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
 .sat.s1 { animation-duration: 28s;  }
 .sat.s2 { animation-duration: 38s; animation-direction: reverse; }
 .sat.s3 { animation-duration: 38s; animation-direction: reverse; animation-delay: -12.67s; }
@@ -439,7 +441,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     <div class="wrap hero-text">
       <span class="kicker" data-reveal="up">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-        Five extensions. 68 browser tools. One small studio.
+        Five extensions. 60+ browser tools. One small studio.
       </span>
       <h1 data-reveal="up" data-delay="1">
         Handy web tools,<br>
@@ -461,12 +463,12 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div class="orbit-core">
           <img src="assets/img/tapdot-icon-256.png" alt="">
         </div>
-        <div class="sat s1" style="--r:100px"><img src="assets/img/floatdeck-icon.png"    alt="FloatDeck"></div>
-        <div class="sat s4" style="--r:100px"><img src="assets/img/commentiq-icon.png"    alt="CommentIQ"></div>
-        <div class="sat s2" style="--r:170px"><img src="assets/img/tab-memory-icon.png"   alt="Tab Memory Manager"></div>
-        <div class="sat s3" style="--r:170px"><img src="assets/img/margin-icon.png"        alt="Margin"></div>
-        <div class="sat s5" style="--r:170px"><img src="assets/img/quill-icon.png"         alt="Quill"></div>
-        <div class="sat s6" style="--r:170px"><img src="assets/img/tools-icon.png"        alt="tapdot tools"></div>
+        <div class="sat s1" style="--r:100px"><a href="floatdeck/"           aria-label="FloatDeck"><img src="assets/img/floatdeck-icon.png"  alt="FloatDeck"></a></div>
+        <div class="sat s4" style="--r:100px"><a href="commentiq/"           aria-label="CommentIQ"><img src="assets/img/commentiq-icon.png"  alt="CommentIQ"></a></div>
+        <div class="sat s2" style="--r:170px"><a href="tab-memory-manager/"  aria-label="Tab Memory Manager"><img src="assets/img/tab-memory-icon.png" alt="Tab Memory Manager"></a></div>
+        <div class="sat s3" style="--r:170px"><a href="margin/"              aria-label="Margin"><img src="assets/img/margin-icon.png"         alt="Margin"></a></div>
+        <div class="sat s5" style="--r:170px"><a href="quill/"               aria-label="Quill"><img src="assets/img/quill-icon.png"           alt="Quill"></a></div>
+        <div class="sat s6" style="--r:170px"><a href="https://tools.tapdot.org/" aria-label="tapdot tools" target="_blank" rel="noopener"><img src="assets/img/tools-icon.png" alt="tapdot tools"></a></div>
       </div>
     </div>
   </section>
@@ -486,7 +488,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div data-reveal="up">
           <span class="section-label">The lineup</span>
           <h2 class="section-heading">Extensions &amp; tools built to last</h2>
-          <p class="section-sub">Five extensions and 68 browser tools — each does one job well, nothing more, nothing bloated.</p>
+          <p class="section-sub">Five extensions and 60+ browser tools — each does one job well, nothing more, nothing bloated.</p>
         </div>
       </div>
 
@@ -589,16 +591,16 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="5">
           <div class="pcard-media">
-            <img src="assets/img/tools-promo.png" alt="tapdot tools — 68 tools, one place" loading="lazy" data-lightbox />
+            <img src="assets/img/tools-promo.png" alt="tapdot tools — 60+ tools, one place" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
               <img class="pcard-icon" src="assets/img/tools-icon.png" alt="" />
-              <span class="badge live" style="background:color-mix(in srgb,#6366f1 15%,transparent);color:#6366f1;border-color:color-mix(in srgb,#6366f1 30%,transparent)">68 tools</span>
+              <span class="badge live" style="background:color-mix(in srgb,#6366f1 15%,transparent);color:#6366f1;border-color:color-mix(in srgb,#6366f1 30%,transparent)">60+ tools</span>
             </div>
             <h3>tapdot tools</h3>
             <p class="tag">Browser tools for work &amp; study</p>
-            <p class="desc">68 privacy-first web tools across 10 categories — Study, Write, Dev, Design, Finance, Health, HR, Legal, Marketing and Productivity. All run locally in your browser, no account needed.</p>
+            <p class="desc">60+ privacy-first web tools across 10 categories — Study, Write, Dev, Design, Finance, Health, HR, Legal, Marketing and Productivity. All run locally in your browser, no account needed.</p>
             <div class="row">
               <a class="btn primary sm" href="https://tools.tapdot.org/" target="_blank" rel="noopener">Explore tools</a>
             </div>
