@@ -222,6 +222,7 @@ h1 {
 .sat.s3 { animation-duration: 38s; animation-direction: reverse; animation-delay: -12.67s; }
 .sat.s4 { animation-duration: 28s; animation-delay: -14s; }
 .sat.s5 { animation-duration: 38s; animation-direction: reverse; animation-delay: -25.33s; }
+.sat.s6 { animation-duration: 38s; animation-direction: reverse; animation-delay: -28.5s; }
 @keyframes orbit-spin {
   from { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
   to   { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
@@ -233,6 +234,7 @@ h1 {
   .sat.s2 { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
   .sat.s3 { transform: rotate(120deg) translateX(var(--r)) rotate(-120deg); }
   .sat.s5 { transform: rotate(240deg) translateX(var(--r)) rotate(-240deg); }
+  .sat.s6 { transform: rotate(270deg) translateX(var(--r)) rotate(-270deg); }
 }
 @media (max-width: 640px) {
   .orbit-wrap { height: 240px; }
@@ -437,18 +439,18 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     <div class="wrap hero-text">
       <span class="kicker" data-reveal="up">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-        Five extensions. One small studio.
+        Five extensions. 68 browser tools. One small studio.
       </span>
       <h1 data-reveal="up" data-delay="1">
         Handy web tools,<br>
         <span class="grad-text">one tap away.</span>
       </h1>
       <p class="lede" data-reveal="up" data-delay="2">
-        tapdot builds small, fast browser extensions that do one job well — no accounts, no ads, no trackers, nothing sent anywhere it shouldn't be.
+        tapdot builds small, fast browser extensions and web tools that do one job well — no accounts, no ads, no trackers, nothing sent anywhere it shouldn't be.
       </p>
       <div class="cta-row" data-reveal="up" data-delay="3">
         <a class="btn primary" href="#products">Explore extensions</a>
-        <a class="btn ghost" href="#philosophy">Our approach</a>
+        <a class="btn ghost" href="https://tools.tapdot.org/">Browse tools</a>
       </div>
     </div>
 
@@ -464,6 +466,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div class="sat s2" style="--r:170px"><img src="assets/img/tab-memory-icon.png"   alt="Tab Memory Manager"></div>
         <div class="sat s3" style="--r:170px"><img src="assets/img/margin-icon.png"        alt="Margin"></div>
         <div class="sat s5" style="--r:170px"><img src="assets/img/quill-icon.png"         alt="Quill"></div>
+        <div class="sat s6" style="--r:170px"><img src="assets/img/tools-icon.png"        alt="tapdot tools"></div>
       </div>
     </div>
   </section>
@@ -482,8 +485,8 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
       <div class="section-header">
         <div data-reveal="up">
           <span class="section-label">The lineup</span>
-          <h2 class="section-heading">Browser tools built to last</h2>
-          <p class="section-sub">Each extension solves one real everyday annoyance — nothing more, nothing bloated.</p>
+          <h2 class="section-heading">Extensions &amp; tools built to last</h2>
+          <p class="section-sub">Five extensions and 68 browser tools — each does one job well, nothing more, nothing bloated.</p>
         </div>
       </div>
 
@@ -584,6 +587,24 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
         </div>
 
+        <div class="pcard" data-reveal="up" data-delay="5">
+          <div class="pcard-media">
+            <img src="assets/img/tools-promo.png" alt="tapdot tools — 68 tools, one place" loading="lazy" data-lightbox />
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/tools-icon.png" alt="" />
+              <span class="badge live" style="background:color-mix(in srgb,#6366f1 15%,transparent);color:#6366f1;border-color:color-mix(in srgb,#6366f1 30%,transparent)">68 tools</span>
+            </div>
+            <h3>tapdot tools</h3>
+            <p class="tag">Browser tools for work &amp; study</p>
+            <p class="desc">68 privacy-first web tools across 10 categories — Study, Write, Dev, Design, Finance, Health, HR, Legal, Marketing and Productivity. All run locally in your browser, no account needed.</p>
+            <div class="row">
+              <a class="btn primary sm" href="https://tools.tapdot.org/" target="_blank" rel="noopener">Explore tools</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -665,18 +686,17 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           <a href="quill/">Quill</a>
         </div>
         <div class="foot-col">
-          <h4>Study tools</h4>
-          <a href="https://tools.tapdot.org/study/cite/">CiteMaker</a>
-          <a href="https://tools.tapdot.org/study/flashcards/">FlashForge</a>
-          <a href="https://tools.tapdot.org/study/grades/">GradeCalc</a>
-          <a href="https://tools.tapdot.org/study/bias/">BiasCheck</a>
-        </div>
-        <div class="foot-col">
-          <h4>Write tools</h4>
-          <a href="https://tools.tapdot.org/write/readscore/">ReadScore</a>
-          <a href="https://tools.tapdot.org/write/wordcount/">WordCount Pro</a>
-          <a href="https://tools.tapdot.org/write/lorem/">LoremCraft</a>
-          <a href="https://tools.tapdot.org/write/thread/">ThreadCraft</a>
+          <h4>Tools</h4>
+          <a href="https://tools.tapdot.org/study/">Study</a>
+          <a href="https://tools.tapdot.org/write/">Write</a>
+          <a href="https://tools.tapdot.org/dev/">Dev</a>
+          <a href="https://tools.tapdot.org/design/">Design</a>
+          <a href="https://tools.tapdot.org/finance/">Finance</a>
+          <a href="https://tools.tapdot.org/health/">Health</a>
+          <a href="https://tools.tapdot.org/hr/">HR</a>
+          <a href="https://tools.tapdot.org/legal/">Legal</a>
+          <a href="https://tools.tapdot.org/marketing/">Marketing</a>
+          <a href="https://tools.tapdot.org/productivity/">Productivity</a>
         </div>
         <div class="foot-col">
           <h4>Legal</h4>
@@ -742,7 +762,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     var inner=mobile?'65px':'100px';
     var outer=mobile?'115px':'170px';
     document.querySelectorAll('.sat.s1,.sat.s4').forEach(function(el){el.style.setProperty('--r',inner);});
-    document.querySelectorAll('.sat.s2,.sat.s3,.sat.s5').forEach(function(el){el.style.setProperty('--r',outer);});
+    document.querySelectorAll('.sat.s2,.sat.s3,.sat.s5,.sat.s6').forEach(function(el){el.style.setProperty('--r',outer);});
   }
   adjustOrbit();
   window.addEventListener('resize',adjustOrbit);
