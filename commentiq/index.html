@@ -157,12 +157,39 @@
     padding:8px 16px;border-radius:999px;font-weight:600;font-size:13.5px}
   @media(max-width:640px){.privacy-box{padding:44px 28px}}
 
-  /* ── Waitlist ── */
+  /* ── Waitlist / CTA box ── */
   .waitlist-box{background:var(--card2);border:1px solid var(--bd);border-radius:28px;padding:60px 48px;text-align:center;display:flex;flex-direction:column;align-items:center}
   .waitlist-box h2{font-size:30px;margin:0 0 12px;letter-spacing:-.02em;font-weight:800}
   .waitlist-box>p{color:var(--muted);max-width:500px;margin:0 0 28px;font-size:16px;line-height:1.68}
   .waitlist-box>p.waitlist-note{margin:18px 0 0;font-size:13px;color:var(--muted)}
   @media(max-width:640px){.waitlist-box{padding:44px 28px}}
+
+  /* ── Gemini Nano explainer ── */
+  .nano-details{margin-top:14px}
+  .nano-details summary{font-size:13px;color:var(--muted);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:5px}
+  .nano-details summary::-webkit-details-marker{display:none}
+  .nano-details summary::after{content:"›";transition:transform .2s}
+  .nano-details[open] summary::after{transform:rotate(90deg)}
+  .nano-details summary:hover{color:var(--fg)}
+  .nano-details .nano-body{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.7;max-width:480px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;text-align:left}
+  .nano-body b{color:var(--fg)}
+
+  /* ── Compatibility note ── */
+  .compat-note{margin-top:16px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+  .compat-note a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+  .compat-dot{width:7px;height:7px;border-radius:50%;background:var(--ciq);opacity:.6;flex-shrink:0}
+
+  /* ── Comparison table ── */
+  .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .compare-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+  .compare-table th{padding:12px 18px;font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--muted);text-align:left;border-bottom:1px solid var(--bd)}
+  .compare-table th.hl{color:var(--ciq);background:color-mix(in srgb,var(--ciq) 6%,transparent);border-radius:8px 8px 0 0}
+  .compare-table td{padding:13px 18px;border-bottom:1px solid var(--bd);color:var(--fg)}
+  .compare-table td.hl{background:color-mix(in srgb,var(--ciq) 4%,transparent);font-weight:600}
+  .compare-table tr:last-child td{border-bottom:0}
+  .compare-table .yes{color:#16a34a;font-weight:700}
+  .compare-table .no{color:var(--muted)}
+  .compare-table .partial{color:#d97706;font-weight:600}
 
   /* ── Footer ── */
   footer{border-top:1px solid var(--bd);padding:36px 0 28px}
@@ -188,6 +215,7 @@
     <nav class="nav-links">
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
+      <a href="#compare">Compare</a>
       <a href="#privacy">Privacy</a>
       <a href="https://chromewebstore.google.com/detail/commentiq/cmkehjfedgcjnpjojlanlgalojnlcmjf" target="_blank" rel="noopener">Add to Chrome</a>
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
@@ -217,6 +245,12 @@
           <a class="btn ghost" href="#screenshots">See screenshots</a>
         </div>
         <p class="hero-note" data-reveal="up" data-delay="4"><b>Powered by Gemini Nano.</b> Everything runs locally in your browser.</p>
+        <details class="nano-details" data-reveal="up" data-delay="5">
+          <summary>What is Gemini Nano?</summary>
+          <div class="nano-body">
+            <b>Gemini Nano</b> is Google's smallest AI model, built directly into Chrome (v127+). Unlike cloud AI, it runs entirely on your device — no internet connection needed, nothing sent to Google or anyone else. It's the same technology that powers on-device features in Pixel phones. CommentIQ uses it to analyse comments without ever touching a server.
+          </div>
+        </details>
       </div>
       <div class="hero-preview" data-reveal="up" data-delay="2">
         <img src="store-assets/ss2-sentiment.png" alt="CommentIQ showing an audience sentiment breakdown" data-lightbox />
@@ -254,6 +288,78 @@
     </div>
   </section>
 
+  <!-- Comparison -->
+  <section id="compare">
+    <div class="wrap">
+      <h2 class="h2" data-reveal="up">How it stacks up</h2>
+      <p class="sub" data-reveal="up" data-delay="1">CommentIQ is the only comment analysis tool that runs entirely on your device — no account, no cloud, no tradeoff.</p>
+      <div class="compare-wrap" data-reveal="up" data-delay="2">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="hl">CommentIQ</th>
+              <th>TubeBuddy</th>
+              <th>VidIQ</th>
+              <th>Manual scroll</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI comment analysis</td>
+              <td class="hl yes">✓ On-device</td>
+              <td class="partial">Partial</td>
+              <td class="partial">Partial</td>
+              <td class="no">✗</td>
+            </tr>
+            <tr>
+              <td>Data stays on your device</td>
+              <td class="hl yes">✓ Always</td>
+              <td class="no">✗ Cloud</td>
+              <td class="no">✗ Cloud</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>No account required</td>
+              <td class="hl yes">✓</td>
+              <td class="no">✗</td>
+              <td class="no">✗</td>
+              <td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Sentiment breakdown</td>
+              <td class="hl yes">✓ Full</td>
+              <td class="partial">Basic</td>
+              <td class="partial">Basic</td>
+              <td class="no">✗</td>
+            </tr>
+            <tr>
+              <td>Topic extraction</td>
+              <td class="hl yes">✓</td>
+              <td class="no">✗</td>
+              <td class="no">✗</td>
+              <td class="no">✗</td>
+            </tr>
+            <tr>
+              <td>Questions &amp; content ideas</td>
+              <td class="hl yes">✓</td>
+              <td class="no">✗</td>
+              <td class="no">✗</td>
+              <td class="no">✗</td>
+            </tr>
+            <tr>
+              <td>Free tier</td>
+              <td class="hl yes">✓</td>
+              <td class="partial">Freemium</td>
+              <td class="partial">Freemium</td>
+              <td class="yes">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- Privacy -->
   <section id="privacy">
     <div class="wrap">
@@ -279,6 +385,7 @@
         <p>CommentIQ is free to install. Open any YouTube video, click the extension, and your comment analysis starts immediately — no account, no data leaving your device.</p>
         <a class="btn primary" href="https://chromewebstore.google.com/detail/commentiq/cmkehjfedgcjnpjojlanlgalojnlcmjf" target="_blank" rel="noopener">Add to Chrome — it's free</a>
         <p class="waitlist-note">Questions or feedback? <a href="mailto:rkmohanchn@gmail.com" style="color:inherit;text-decoration:underline">Get in touch</a></p>
+        <p class="compat-note"><span class="compat-dot"></span>Requires Chrome 127+ · On-device AI features enabled · Works on most modern desktops and laptops</p>
       </div>
     </div>
   </section>
