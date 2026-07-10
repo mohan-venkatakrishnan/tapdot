@@ -1,53 +1,145 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+/* LaunchPad promo — static frame of the Ignition flight scene (launch.tapdot.org) */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1280px;height:800px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-.bg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 12% 8%,rgba(255,138,76,.22),transparent 55%),radial-gradient(ellipse 55% 55% at 92% 92%,rgba(94,196,232,.18),transparent 55%),linear-gradient(155deg,#0a0b10 0%,#141020 55%,#0a0b10 100%)}
-.stars{position:absolute;inset:0;opacity:.4;background-image:radial-gradient(1.5px 1.5px at 18% 22%,rgba(238,237,242,.9),transparent),radial-gradient(1px 1px at 42% 12%,rgba(238,237,242,.7),transparent),radial-gradient(1.5px 1.5px at 72% 28%,rgba(238,237,242,.9),transparent),radial-gradient(1px 1px at 28% 72%,rgba(238,237,242,.6),transparent),radial-gradient(1px 1px at 88% 55%,rgba(238,237,242,.8),transparent),radial-gradient(1px 1px at 60% 82%,rgba(238,237,242,.6),transparent),radial-gradient(1.5px 1.5px at 8% 55%,rgba(238,237,242,.7),transparent)}
-.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:0 80px;gap:60px}
-.left{flex:0 0 430px;color:#eeedf2}
-.brand{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-.brand-icon{width:48px;height:48px;border-radius:13px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.14)}
-.brand-icon img{width:100%;height:100%;display:block}
-.brand-nm{font-size:22px;font-weight:800;letter-spacing:-.02em;opacity:.92}
-.h{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1.06}
-.h .g{background:linear-gradient(90deg,#ff8a4c,#ffb37a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{margin-top:18px;font-size:17px;color:rgba(238,237,242,.62);line-height:1.6;max-width:380px}
-.stat{margin-top:30px;display:flex;gap:30px}
-.stat-n{font-size:30px;font-weight:800;color:#ff8a4c}
-.stat-l{font-size:13px;color:rgba(238,237,242,.5);margin-top:2px}
-.right{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.chip{padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:12px}
-.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.chip-t{font-size:14.5px;font-weight:600;color:rgba(238,237,242,.86)}
-.chip.more{justify-content:center;border-style:dashed;background:transparent}
-.chip.more .chip-t{color:#ffb37a;font-weight:700}
+:root{--bg:#0a0b10;--fg:#eeedf2;--muted:#94919e;--card:#13141b;--card2:#181922;--bd:#262731;
+--accent:#ff8a4c;--accent2:#ffb37a;--ion:#5ec4e8;--go:#37d183;--ink:#1c0f06;
+--glow:0 6px 28px rgba(255,138,76,.35);--tile-bd:rgba(255,255,255,.14);
+--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+html,body{width:1280px;height:800px;overflow:hidden;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+.nebula{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.nebula.a{width:620px;height:430px;top:-160px;left:2%;background:rgba(255,138,76,.14)}
+.nebula.b{width:520px;height:380px;top:-120px;right:0;background:rgba(94,196,232,.11)}
+.stars{position:absolute;inset:0;opacity:.5;background-image:
+radial-gradient(1.5px 1.5px at 12% 18%,rgba(238,237,242,.9),transparent),
+radial-gradient(1px 1px at 34% 9%,rgba(238,237,242,.7),transparent),
+radial-gradient(1.5px 1.5px at 58% 14%,rgba(238,237,242,.85),transparent),
+radial-gradient(1px 1px at 79% 22%,rgba(238,237,242,.7),transparent),
+radial-gradient(1px 1px at 91% 9%,rgba(238,237,242,.8),transparent),
+radial-gradient(1px 1px at 22% 44%,rgba(238,237,242,.5),transparent),
+radial-gradient(1.5px 1.5px at 68% 38%,rgba(238,237,242,.6),transparent),
+radial-gradient(1px 1px at 6% 68%,rgba(238,237,242,.6),transparent),
+radial-gradient(1px 1px at 45% 88%,rgba(238,237,242,.5),transparent),
+radial-gradient(1.5px 1.5px at 88% 76%,rgba(238,237,242,.6),transparent),
+radial-gradient(1px 1px at 30% 96%,rgba(238,237,242,.45),transparent)}
+.meteor{position:absolute;width:130px;height:1.5px;border-radius:999px;background:linear-gradient(90deg,rgba(238,237,242,.75),transparent);transform:rotate(32deg)}
+.m1{top:96px;right:210px}.m2{top:210px;left:150px;width:90px;opacity:.55}
+.frame{position:absolute;inset:0;display:flex;flex-direction:column;padding:46px 72px 40px}
+/* top row */
+.top{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:13px;font-weight:800;font-size:23px;letter-spacing:-.015em}
+.brand img{width:50px;height:50px;border-radius:14px;box-shadow:var(--glow)}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.05em;padding:8px 16px;border-radius:999px;color:var(--accent);text-transform:uppercase;background:rgba(255,138,76,.09);border:1px solid rgba(255,138,76,.25)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--go)}
+/* headline */
+.head{text-align:center;margin-top:30px}
+h1{font-size:50px;line-height:1.05;letter-spacing:-.03em;font-weight:800}
+.grad{background:linear-gradient(115deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{margin-top:14px;font-size:17.5px;color:var(--muted)}
+.lede b{color:var(--fg);font-weight:600}
+/* flight scene */
+.flight{position:relative;width:1080px;margin:30px auto 0;flex:1}
+.flight-box{position:relative;width:100%;aspect-ratio:880/300}
+.flight-box svg.track{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fl-guide{fill:none;stroke:var(--bd);stroke-width:1.5;stroke-dasharray:3 8;stroke-linecap:round}
+.fl-trail{fill:none;stroke:url(#flGrad);stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(255,138,76,.65))}
+.fl-pad{fill:var(--fg)}
+.cp{position:absolute;transform:translate(-50%,-50%)}
+.icon-tile{width:44px;height:44px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--tile-bd)}
+.icon-tile svg{width:22px;height:22px;fill:#fff}
+.cp.dim .icon-tile{transform:scale(.84);opacity:.45;filter:saturate(.15)}
+.cp.passed .icon-tile{opacity:1}
+.cp.lit .icon-tile{transform:scale(1.12);box-shadow:0 10px 28px rgba(255,138,76,.4)}
+.cp .ring{position:absolute;inset:-9px;border-radius:18px;border:1.5px solid var(--accent);opacity:.6;transform:scale(1.12)}
+.tick{position:absolute;right:-7px;top:-7px;width:18px;height:18px;border-radius:50%;background:var(--go);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.tick svg{width:10px;height:10px;stroke:#08130c;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fl-rocket{position:absolute;width:44px;height:44px;margin:-22px;z-index:4}
+.fl-rocket svg{width:100%;height:100%;filter:drop-shadow(0 2px 12px rgba(255,138,76,.6));overflow:visible}
+.fl-card{position:absolute;z-index:5;width:290px;transform:translate(-50%,0) translateY(30px);background:rgba(24,25,34,.9);border:1px solid var(--bd);border-radius:15px;box-shadow:0 28px 70px rgba(0,0,0,.55);padding:14px 16px}
+.fl-card .fp-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.fl-card .fp-head .icon-tile{width:26px;height:26px;border-radius:8px}
+.fl-card .fp-head .icon-tile svg{width:13px;height:13px}
+.fl-card .fp-head b{font-size:13.5px}
+.fl-card .ok{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--go);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fl-card .ok svg{width:11px;height:11px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fl-card p{font-size:12.5px;line-height:1.55;color:var(--muted)}
+.fl-caption{text-align:center;margin-top:14px;font-size:15px;font-weight:600;color:var(--muted);font-family:var(--mono)}
+.fl-caption b{color:var(--accent)}
+/* trust row */
+.trust{display:flex;justify-content:center;gap:52px;padding-top:22px;border-top:1px solid var(--bd);color:var(--muted);font-size:15px}
+.trust b{color:var(--fg)}
 </style></head><body>
-<div class="bg"></div><div class="stars"></div>
-<div class="wrap">
-  <div class="left">
-    <div class="brand">
-      <div class="brand-icon"><img src="launchpad-icon.png" alt="LaunchPad"></div>
-      <span class="brand-nm">LaunchPad</span>
-    </div>
-    <div class="h">One brief,<br><span class="g">every launch channel.</span></div>
-    <div class="sub">Describe your product once. LaunchPad drafts a native post for each platform and opens its real composer, pre-filled.</div>
-    <div class="stat">
-      <div><div class="stat-n">30+</div><div class="stat-l">channels, add your own</div></div>
-      <div><div class="stat-n">3</div><div class="stat-l">AI engines</div></div>
-      <div><div class="stat-n">$0</div><div class="stat-l">first launch</div></div>
-    </div>
+<div class="nebula a"></div><div class="nebula b"></div>
+<div class="stars"></div><div class="meteor m1"></div><div class="meteor m2"></div>
+<div class="frame">
+  <div class="top">
+    <div class="brand"><img src="launchpad-icon.png" alt="">LaunchPad</div>
+    <span class="pill"><span class="dot"></span>First launch free</span>
   </div>
-  <div class="right">
-    <div class="chip"><span class="dot" style="background:#ff6600"></span><span class="chip-t">Hacker News</span></div>
-    <div class="chip"><span class="dot" style="background:#da552f"></span><span class="chip-t">Product Hunt</span></div>
-    <div class="chip"><span class="dot" style="background:#eeedf2"></span><span class="chip-t">X / Twitter</span></div>
-    <div class="chip"><span class="dot" style="background:#ff4500"></span><span class="chip-t">Reddit</span></div>
-    <div class="chip"><span class="dot" style="background:#0a66c2"></span><span class="chip-t">LinkedIn</span></div>
-    <div class="chip"><span class="dot" style="background:#1f6feb"></span><span class="chip-t">Indie Hackers</span></div>
-    <div class="chip"><span class="dot" style="background:#a78bfa"></span><span class="chip-t">Dev.to</span></div>
-    <div class="chip"><span class="dot" style="background:#26a5e4"></span><span class="chip-t">Telegram</span></div>
-    <div class="chip"><span class="dot" style="background:#6364ff"></span><span class="chip-t">Mastodon</span></div>
-    <div class="chip more"><span class="chip-t">+ 21 more · add your own</span></div>
+  <div class="head">
+    <h1>One brief, <span class="grad">every launch channel.</span></h1>
+    <div class="lede">Native drafts for <b>30+ channels</b> — Show HN to TikTok — each opening the platform's <b>real composer</b>, pre-filled.</div>
+  </div>
+  <div class="flight">
+    <div class="flight-box" id="box">
+      <svg class="track" viewBox="0 0 880 300" preserveAspectRatio="none">
+        <defs><linearGradient id="flGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ff8a4c"/><stop offset="100%" stop-color="#ffb37a"/>
+        </linearGradient></defs>
+        <path id="fl-path" class="fl-guide" d="M46,246 C46,130 250,60 440,60 C640,60 824,120 824,246"/>
+        <path id="fl-trail" class="fl-trail" d="M46,246 C46,130 250,60 440,60 C640,60 824,120 824,246"/>
+        <rect class="fl-pad" x="33" y="251" width="26" height="7" rx="2.5"/>
+        <rect class="fl-pad" x="811" y="251" width="26" height="7" rx="2.5"/>
+      </svg>
+    </div>
+    <div class="fl-caption">Drafting for <b>LinkedIn</b>… one brief <b>→</b> 30+ native posts</div>
+  </div>
+  <div class="trust">
+    <span><b>30</b> channels built in · <b>add your own</b></span>
+    <span><b>3</b> AI engines, on-device first</span>
+    <span><b>$0</b> first launch — every feature</span>
   </div>
 </div>
+<script>
+const ICONS={
+ycombinator:{c:'#F0652F',d:'M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z'},
+producthunt:{c:'#DA552F',d:'M13.604 8.4h-3.405V12h3.405c.995 0 1.801-.806 1.801-1.801 0-.993-.805-1.799-1.801-1.799zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804c2.319 0 4.2 1.88 4.2 4.199 0 2.321-1.881 4.201-4.201 4.201z'},
+x:{c:'#000000',d:'M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z'},
+linkedin:{c:'#0A66C2',d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'},
+reddit:{c:'#FF4500',d:'M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z'}};
+const STOPS=[
+{t:.20,key:'ycombinator',state:'passed'},
+{t:.40,key:'producthunt',state:'passed'},
+{t:.58,key:'x',state:'passed'},
+{t:.76,key:'linkedin',state:'lit'},
+{t:.92,key:'reddit',state:'dim'}];
+const ROCKET_T=.685,VBW=880,VBH=300;
+const box=document.getElementById('box'),path=document.getElementById('fl-path'),trail=document.getElementById('fl-trail');
+const total=path.getTotalLength();
+const tile=(k,extra)=>`<span class="icon-tile" style="background:${ICONS[k].c}"><svg viewBox="0 0 24 24"><path d="${ICONS[k].d}"/></svg>${extra||''}</span>`;
+STOPS.forEach(s=>{
+  const pt=path.getPointAtLength(s.t*total);
+  const cp=document.createElement('div');
+  cp.className='cp '+s.state;
+  cp.style.left=(pt.x/VBW*100)+'%';cp.style.top=(pt.y/VBH*100)+'%';
+  const tick=s.state==='passed'?'<span class="tick"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>':'';
+  cp.innerHTML=tile(s.key)+tick+(s.state==='lit'?'<span class="ring"></span>':'');
+  box.appendChild(cp);
+});
+/* rocket at ROCKET_T, angled along path */
+const pt=path.getPointAtLength(ROCKET_T*total);
+const p1=path.getPointAtLength((ROCKET_T-.006)*total),p2=path.getPointAtLength((ROCKET_T+.006)*total);
+const ang=Math.atan2(p2.y-p1.y,p2.x-p1.x)*180/Math.PI+90;
+trail.style.strokeDasharray=(ROCKET_T*total)+' '+total;
+const r=document.createElement('div');r.className='fl-rocket';
+r.style.left=(pt.x/VBW*100)+'%';r.style.top=(pt.y/VBH*100)+'%';r.style.transform='rotate('+ang+'deg)';
+r.innerHTML='<svg viewBox="0 0 24 24"><path fill="#ff8a4c" d="M12 1.8c2.9 2.1 4.4 5.3 4.4 8.9 0 1.6-.3 3.2-.9 4.7 0 0-1.5.8-3.5.8s-3.5-.8-3.5-.8c-.6-1.5-.9-3.1-.9-4.7 0-3.6 1.5-6.8 4.4-8.9z"/><circle fill="#0a0b10" cx="12" cy="9.2" r="1.9"/><path fill="#ffb37a" d="M7.6 13.4 5 17.6l3.4-1.1zM16.4 13.4 19 17.6l-3.4-1.1z"/><g><path fill="#ffb37a" opacity=".85" d="M12 17.4c1.2 0 2.4-.15 3.2-.4-.5 2.6-1.7 4.8-3.2 6.6-1.5-1.8-2.7-4-3.2-6.6.8.25 2 .4 3.2.4z"/><path fill="#ffd9a8" d="M12 17.6c.7 0 1.4-.08 1.9-.22-.3 1.6-1 3-1.9 4.1-.9-1.1-1.6-2.5-1.9-4.1.5.14 1.2.22 1.9.22z"/></g></svg>';
+box.appendChild(r);
+/* drafted card below the lit checkpoint (X sits at the top of the arc) */
+const xa=path.getPointAtLength(.58*total);
+const card=document.createElement('div');card.className='fl-card';
+card.style.left=Math.max(17,Math.min(83,xa.x/VBW*100))+'%';card.style.top=(xa.y/VBH*100)+'%';
+card.innerHTML='<div class="fp-head">'+tile('x')+'<b>X</b><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>drafted</span></div><p>Just shipped ✨ — describe your product once, get a native post for every launch channel. On-device AI, composer pre-filled.</p>';
+box.appendChild(card);
+</script>
 </body></html>
