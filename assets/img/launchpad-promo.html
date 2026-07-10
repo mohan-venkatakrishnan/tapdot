@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1280px;height:800px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 12% 8%,rgba(255,138,76,.22),transparent 55%),radial-gradient(ellipse 55% 55% at 92% 92%,rgba(94,196,232,.18),transparent 55%),linear-gradient(155deg,#0a0b10 0%,#141020 55%,#0a0b10 100%)}
+.stars{position:absolute;inset:0;opacity:.4;background-image:radial-gradient(1.5px 1.5px at 18% 22%,rgba(238,237,242,.9),transparent),radial-gradient(1px 1px at 42% 12%,rgba(238,237,242,.7),transparent),radial-gradient(1.5px 1.5px at 72% 28%,rgba(238,237,242,.9),transparent),radial-gradient(1px 1px at 28% 72%,rgba(238,237,242,.6),transparent),radial-gradient(1px 1px at 88% 55%,rgba(238,237,242,.8),transparent),radial-gradient(1px 1px at 60% 82%,rgba(238,237,242,.6),transparent),radial-gradient(1.5px 1.5px at 8% 55%,rgba(238,237,242,.7),transparent)}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:0 80px;gap:60px}
+.left{flex:0 0 430px;color:#eeedf2}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.brand-icon{width:48px;height:48px;border-radius:13px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.14)}
+.brand-icon img{width:100%;height:100%;display:block}
+.brand-nm{font-size:22px;font-weight:800;letter-spacing:-.02em;opacity:.92}
+.h{font-size:52px;font-weight:800;letter-spacing:-2px;line-height:1.06}
+.h .g{background:linear-gradient(90deg,#ff8a4c,#ffb37a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{margin-top:18px;font-size:17px;color:rgba(238,237,242,.62);line-height:1.6;max-width:380px}
+.stat{margin-top:30px;display:flex;gap:30px}
+.stat-n{font-size:30px;font-weight:800;color:#ff8a4c}
+.stat-l{font-size:13px;color:rgba(238,237,242,.5);margin-top:2px}
+.right{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chip{padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:12px}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.chip-t{font-size:14.5px;font-weight:600;color:rgba(238,237,242,.86)}
+.chip.more{justify-content:center;border-style:dashed;background:transparent}
+.chip.more .chip-t{color:#ffb37a;font-weight:700}
+</style></head><body>
+<div class="bg"></div><div class="stars"></div>
+<div class="wrap">
+  <div class="left">
+    <div class="brand">
+      <div class="brand-icon"><img src="launchpad-icon.png" alt="LaunchPad"></div>
+      <span class="brand-nm">LaunchPad</span>
+    </div>
+    <div class="h">One brief,<br><span class="g">every launch channel.</span></div>
+    <div class="sub">Describe your product once. LaunchPad drafts a native post for each platform and opens its real composer, pre-filled.</div>
+    <div class="stat">
+      <div><div class="stat-n">30</div><div class="stat-l">launch channels</div></div>
+      <div><div class="stat-n">3</div><div class="stat-l">AI engines</div></div>
+      <div><div class="stat-n">$0</div><div class="stat-l">first launch</div></div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="chip"><span class="dot" style="background:#ff6600"></span><span class="chip-t">Hacker News</span></div>
+    <div class="chip"><span class="dot" style="background:#da552f"></span><span class="chip-t">Product Hunt</span></div>
+    <div class="chip"><span class="dot" style="background:#eeedf2"></span><span class="chip-t">X / Twitter</span></div>
+    <div class="chip"><span class="dot" style="background:#ff4500"></span><span class="chip-t">Reddit</span></div>
+    <div class="chip"><span class="dot" style="background:#0a66c2"></span><span class="chip-t">LinkedIn</span></div>
+    <div class="chip"><span class="dot" style="background:#1f6feb"></span><span class="chip-t">Indie Hackers</span></div>
+    <div class="chip"><span class="dot" style="background:#a78bfa"></span><span class="chip-t">Dev.to</span></div>
+    <div class="chip"><span class="dot" style="background:#26a5e4"></span><span class="chip-t">Telegram</span></div>
+    <div class="chip"><span class="dot" style="background:#6364ff"></span><span class="chip-t">Mastodon</span></div>
+    <div class="chip more"><span class="chip-t">+ 21 more channels</span></div>
+  </div>
+</div>
+</body></html>
