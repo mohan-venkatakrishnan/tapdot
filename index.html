@@ -11,6 +11,26 @@
 <meta property="og:description" content="Small, fast, privacy-first extensions, apps and tools. No ads, no trackers." />
 <meta property="og:image" content="assets/img/tapdot-banner.png" />
 <meta name="theme-color" content="#5b6cf0" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "tapdot",
+  "url": "https://tapdot.org/",
+  "logo": "https://tapdot.org/assets/img/tapdot-icon-256.png",
+  "description": "tapdot builds small, fast, privacy-first browser extensions, web apps, and browser tools. No ads, no trackers, nothing sent anywhere it shouldn't be.",
+  "email": "ceo@tapdot.org",
+  "sameAs": ["https://tapdot.lemonsqueezy.com"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "FloatDeck", "url": "https://tapdot.org/floatdeck/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Tab Memory Manager", "url": "https://tapdot.org/tab-memory-manager/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Margin", "url": "https://tapdot.org/margin/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "CommentIQ", "url": "https://tapdot.org/commentiq/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Quill", "url": "https://tapdot.org/quill/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
+    { "@type": "Offer", "itemOffered": { "@type": "WebApplication", "name": "LaunchPad", "url": "https://launch.tapdot.org/", "applicationCategory": "BusinessApplication" } }
+  ]
+}
+</script>
 <style>
 /* ─── Reset & tokens ─────────────────────────────── */
 :root {
@@ -444,7 +464,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     <div class="wrap hero-text">
       <span class="kicker" data-reveal="up">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-        Five extensions. One web app. 90+ browser tools. One small studio.
+        Five extensions, all live. One web app. 90+ browser tools. One small studio.
       </span>
       <h1 data-reveal="up" data-delay="1">
         Handy web tools,<br>
@@ -479,7 +499,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
   <!-- ── Trust strip ── -->
   <div class="trust wrap" data-reveal="up">
-    <span><b>4</b> extensions live &amp; <b>1</b> in development</span>
+    <span><b>5</b> extensions live</span>
     <span><b>1</b> web app live</span>
     <span><b>90+</b> browser tools</span>
     <span><b>No accounts</b> for extensions &amp; tools</span>
@@ -506,7 +526,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/floatdeck-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/floatdeck-icon.png" alt="FloatDeck icon" />
               <span class="badge live">Live on Chrome</span>
             </div>
             <h3>FloatDeck</h3>
@@ -525,7 +545,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/tab-memory-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/tab-memory-icon.png" alt="Tab Memory Manager icon" />
               <span class="badge live">Live on Chrome</span>
             </div>
             <h3>Tab Memory Manager</h3>
@@ -544,7 +564,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/margin-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/margin-icon.png" alt="Margin icon" />
               <span class="badge live">Live on Chrome</span>
             </div>
             <h3>Margin</h3>
@@ -563,7 +583,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/commentiq-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/commentiq-icon.png" alt="CommentIQ icon" />
               <span class="badge live">Live</span>
             </div>
             <h3>CommentIQ</h3>
@@ -582,14 +602,14 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/quill-icon.png" alt="" />
-              <span class="badge soon">Coming soon</span>
+              <img class="pcard-icon" src="assets/img/quill-icon.png" alt="Quill icon" />
+              <span class="badge live">Live on Chrome</span>
             </div>
             <h3>Quill</h3>
             <p class="tag">AI writing tools for any page</p>
             <p class="desc">Apple-style writing tools everywhere. Select text, then rewrite in any tone, proofread, summarize, or transform it — on-device with Gemini Nano, fully private.</p>
             <div class="row">
-              <a class="btn primary sm" href="mailto:ceo@tapdot.org?subject=Quill%20Early%20Access">Join waitlist</a>
+              <a class="btn primary sm" href="https://chromewebstore.google.com/detail/quill-by-tapdot-on-device/fkckfaljdbiiobmoedcmegnajgmafkeo" target="_blank" rel="noopener">Add to Chrome</a>
               <a class="btn ghost sm" href="quill/">Learn more →</a>
             </div>
           </div>
@@ -601,7 +621,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/launchpad-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/launchpad-icon.png" alt="LaunchPad icon" />
               <span class="badge live" style="background:color-mix(in srgb,#ff8a4c 14%,transparent);color:#e0702f;border-color:color-mix(in srgb,#ff8a4c 32%,transparent)">Live · Web app</span>
             </div>
             <h3>LaunchPad</h3>
@@ -619,7 +639,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
           </div>
           <div class="pcard-body">
             <div class="pcard-top">
-              <img class="pcard-icon" src="assets/img/tools-icon.png" alt="" />
+              <img class="pcard-icon" src="assets/img/tools-icon.png" alt="tapdot tools icon" />
               <span class="badge live" style="background:color-mix(in srgb,#6366f1 15%,transparent);color:#6366f1;border-color:color-mix(in srgb,#6366f1 30%,transparent)">90+ tools</span>
             </div>
             <h3>tapdot tools</h3>
