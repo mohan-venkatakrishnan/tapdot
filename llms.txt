@@ -1,6 +1,6 @@
 # tapdot
 
-> tapdot is a one-person software studio building small, fast, privacy-first browser extensions, a web app, and 90+ browser tools. No ads, no analytics, no accounts required for extensions or tools. What can run locally, runs locally — most AI features use on-device models (Gemini Nano), never sending page content to a server.
+> tapdot is a one-person software studio building small, fast, privacy-first browser extensions, web apps, and 90+ browser tools. No ads, no analytics, no accounts required for extensions or tools. What can run locally, runs locally — most AI features use on-device models (Gemini Nano), never sending page content to a server.
 
 ## Extensions (Chrome Web Store, all free and live)
 
@@ -10,9 +10,10 @@
 - [CommentIQ](https://tapdot.org/commentiq/): Analyzes YouTube comments with on-device AI — sentiment breakdown, topic extraction, questions and ideas.
 - [Quill](https://tapdot.org/quill/): Apple-style AI writing tools for any page — rewrite in any tone, proofread, summarize, and transform selected text, on-device with Gemini Nano.
 
-## Web app
+## Web apps
 
 - [LaunchPad](https://launch.tapdot.org/): Describe a product once and LaunchPad drafts a native post for 30+ launch channels (Hacker News, Product Hunt, X, Reddit, LinkedIn, and more, plus custom channels), opening each platform's real composer pre-filled. Requires a free Google sign-in to save drafts; first launch is free with every AI engine and channel unlocked.
+- [PeerReview](https://peerreview.tapdot.org/): A review exchange for indie developers. List your product, get matched to review someone else's, and they review yours in return — a strict one-for-one exchange verified by real people, no karma farming. Free to list. Requires a free Google sign-in.
 
 ## Tools
 

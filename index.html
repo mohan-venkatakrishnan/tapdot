@@ -5,7 +5,7 @@
 <script>!function(){var t=localStorage.getItem('tapdot-theme');t&&document.documentElement.setAttribute('data-theme',t)}()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tapdot — Handy web tools, one tap away.</title>
-<meta name="description" content="tapdot builds small, fast, privacy-first browser extensions and web apps: FloatDeck, Tab Memory Manager, Margin, CommentIQ, Quill, and LaunchPad. No ads, no trackers, nothing sent anywhere it shouldn't be." />
+<meta name="description" content="tapdot builds small, fast, privacy-first browser extensions and web apps: FloatDeck, Tab Memory Manager, Margin, CommentIQ, Quill, LaunchPad, and PeerReview. No ads, no trackers, nothing sent anywhere it shouldn't be." />
 <link rel="icon" href="assets/img/tapdot-icon-256.png" />
 <meta property="og:title" content="tapdot — Handy web tools, one tap away." />
 <meta property="og:description" content="Small, fast, privacy-first extensions, apps and tools. No ads, no trackers." />
@@ -27,7 +27,8 @@
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Margin", "url": "https://tapdot.org/margin/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "CommentIQ", "url": "https://tapdot.org/commentiq/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Quill", "url": "https://tapdot.org/quill/", "applicationCategory": "BrowserApplication", "operatingSystem": "Chrome" } },
-    { "@type": "Offer", "itemOffered": { "@type": "WebApplication", "name": "LaunchPad", "url": "https://launch.tapdot.org/", "applicationCategory": "BusinessApplication" } }
+    { "@type": "Offer", "itemOffered": { "@type": "WebApplication", "name": "LaunchPad", "url": "https://launch.tapdot.org/", "applicationCategory": "BusinessApplication" } },
+    { "@type": "Offer", "itemOffered": { "@type": "WebApplication", "name": "PeerReview", "url": "https://peerreview.tapdot.org/", "applicationCategory": "BusinessApplication" } }
   ]
 }
 </script>
@@ -239,12 +240,13 @@ h1 {
 .sat img { width: 34px; height: 34px; border-radius: 10px; display: block; }
 .sat a { display: block; border-radius: 10px; outline-offset: 3px; }
 .sat a:hover img { transform: scale(1.15); transition: transform .2s; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
-.sat.s1 { animation-duration: 28s;  }
+.sat.s1 { animation-duration: 28s; }
+.sat.s4 { animation-duration: 28s; animation-delay: -7s; }
+.sat.s7 { animation-duration: 28s; animation-delay: -14s; }
+.sat.s8 { animation-duration: 28s; animation-delay: -21s; }
 .sat.s2 { animation-duration: 38s; animation-direction: reverse; }
-.sat.s3 { animation-duration: 38s; animation-direction: reverse; animation-delay: -12.67s; }
-.sat.s4 { animation-duration: 28s; animation-delay: -9.33s; }
-.sat.s7 { animation-duration: 28s; animation-delay: -18.67s; }
-.sat.s5 { animation-duration: 38s; animation-direction: reverse; animation-delay: -25.33s; }
+.sat.s3 { animation-duration: 38s; animation-direction: reverse; animation-delay: -9.5s; }
+.sat.s5 { animation-duration: 38s; animation-direction: reverse; animation-delay: -19s; }
 .sat.s6 { animation-duration: 38s; animation-direction: reverse; animation-delay: -28.5s; }
 @keyframes orbit-spin {
   from { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
@@ -253,11 +255,12 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .sat { animation: none; }
   .sat.s1 { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
-  .sat.s4 { transform: rotate(120deg) translateX(var(--r)) rotate(-120deg); }
-  .sat.s7 { transform: rotate(240deg) translateX(var(--r)) rotate(-240deg); }
+  .sat.s4 { transform: rotate(90deg)  translateX(var(--r)) rotate(-90deg); }
+  .sat.s7 { transform: rotate(180deg) translateX(var(--r)) rotate(-180deg); }
+  .sat.s8 { transform: rotate(270deg) translateX(var(--r)) rotate(-270deg); }
   .sat.s2 { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg); }
-  .sat.s3 { transform: rotate(120deg) translateX(var(--r)) rotate(-120deg); }
-  .sat.s5 { transform: rotate(240deg) translateX(var(--r)) rotate(-240deg); }
+  .sat.s3 { transform: rotate(90deg)  translateX(var(--r)) rotate(-90deg); }
+  .sat.s5 { transform: rotate(180deg) translateX(var(--r)) rotate(-180deg); }
   .sat.s6 { transform: rotate(270deg) translateX(var(--r)) rotate(-270deg); }
 }
 @media (max-width: 640px) {
@@ -443,6 +446,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     <nav class="nav-links">
       <a class="minor" href="#products">Extensions</a>
       <a class="minor" href="https://launch.tapdot.org/">LaunchPad</a>
+      <a class="minor" href="https://peerreview.tapdot.org/">PeerReview</a>
       <a class="minor" href="https://tools.tapdot.org/">Tools</a>
       <a class="minor" href="#philosophy">Why tapdot</a>
       <a class="minor" href="#contact">Contact</a>
@@ -464,7 +468,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     <div class="wrap hero-text">
       <span class="kicker" data-reveal="up">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-        Five extensions, all live. One web app. 90+ browser tools. One small studio.
+        Five extensions. Two web apps. 90+ browser tools. One small studio.
       </span>
       <h1 data-reveal="up" data-delay="1">
         Handy web tools,<br>
@@ -489,6 +493,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div class="sat s1" style="--r:100px"><a href="floatdeck/"           aria-label="FloatDeck"><img src="assets/img/floatdeck-icon.png"  alt="FloatDeck"></a></div>
         <div class="sat s4" style="--r:100px"><a href="commentiq/"           aria-label="CommentIQ"><img src="assets/img/commentiq-icon.png"  alt="CommentIQ"></a></div>
         <div class="sat s7" style="--r:100px"><a href="https://launch.tapdot.org/" aria-label="LaunchPad"><img src="assets/img/launchpad-icon.png" alt="LaunchPad"></a></div>
+        <div class="sat s8" style="--r:100px"><a href="https://peerreview.tapdot.org/" aria-label="PeerReview"><img src="assets/img/peerreview-icon.png" alt="PeerReview"></a></div>
         <div class="sat s2" style="--r:170px"><a href="tab-memory-manager/"  aria-label="Tab Memory Manager"><img src="assets/img/tab-memory-icon.png" alt="Tab Memory Manager"></a></div>
         <div class="sat s3" style="--r:170px"><a href="margin/"              aria-label="Margin"><img src="assets/img/margin-icon.png"         alt="Margin"></a></div>
         <div class="sat s5" style="--r:170px"><a href="quill/"               aria-label="Quill"><img src="assets/img/quill-icon.png"           alt="Quill"></a></div>
@@ -500,7 +505,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
   <!-- ── Trust strip ── -->
   <div class="trust wrap" data-reveal="up">
     <span><b>5</b> extensions live</span>
-    <span><b>1</b> web app live</span>
+    <span><b>2</b> web apps live</span>
     <span><b>90+</b> browser tools</span>
     <span><b>No accounts</b> for extensions &amp; tools</span>
     <span><b>Local-first</b> by default</span>
@@ -514,7 +519,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div data-reveal="up">
           <span class="section-label">The lineup</span>
           <h2 class="section-heading">Extensions, apps &amp; tools built to last</h2>
-          <p class="section-sub">Five extensions, one web app, and 90+ browser tools — each does one job well, nothing more, nothing bloated.</p>
+          <p class="section-sub">Five extensions, two web apps, and 90+ browser tools — each does one job well, nothing more, nothing bloated.</p>
         </div>
       </div>
 
@@ -635,6 +640,24 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
 
         <div class="pcard" data-reveal="up" data-delay="6">
           <div class="pcard-media">
+            <img src="assets/img/peerreview-promo.png" alt="PeerReview — genuine reviews, mutual trust" loading="lazy" data-lightbox />
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <img class="pcard-icon" src="assets/img/peerreview-icon.png" alt="PeerReview icon" />
+              <span class="badge live" style="background:color-mix(in srgb,#C9A84C 16%,transparent);color:#a07830;border-color:color-mix(in srgb,#C9A84C 34%,transparent)">Live · Web app</span>
+            </div>
+            <h3>PeerReview</h3>
+            <p class="tag">Genuine reviews. Mutual trust.</p>
+            <p class="desc">A review exchange for indie developers — review a developer's product, a developer reviews yours. Every review verified by a real person, a strict one-for-one exchange, no karma stockpiling, no shortcuts.</p>
+            <div class="row">
+              <a class="btn primary sm" href="https://peerreview.tapdot.org/">Open PeerReview</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-reveal="up" data-delay="0">
+          <div class="pcard-media">
             <img src="assets/img/tools-promo.png" alt="tapdot tools — 90+ tools, one place" loading="lazy" data-lightbox />
           </div>
           <div class="pcard-body">
@@ -734,6 +757,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
         <div class="foot-col">
           <h4>Apps</h4>
           <a href="https://launch.tapdot.org/">LaunchPad</a>
+          <a href="https://peerreview.tapdot.org/">PeerReview</a>
         </div>
         <div class="foot-col">
           <h4>Tools</h4>
@@ -811,7 +835,7 @@ footer { border-top: 1px solid var(--bd); padding: 52px 0 36px; }
     var mobile=window.innerWidth<=640;
     var inner=mobile?'65px':'100px';
     var outer=mobile?'115px':'170px';
-    document.querySelectorAll('.sat.s1,.sat.s4,.sat.s7').forEach(function(el){el.style.setProperty('--r',inner);});
+    document.querySelectorAll('.sat.s1,.sat.s4,.sat.s7,.sat.s8').forEach(function(el){el.style.setProperty('--r',inner);});
     document.querySelectorAll('.sat.s2,.sat.s3,.sat.s5,.sat.s6').forEach(function(el){el.style.setProperty('--r',outer);});
   }
   adjustOrbit();
