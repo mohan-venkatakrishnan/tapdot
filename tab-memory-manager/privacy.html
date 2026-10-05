@@ -32,7 +32,7 @@
 <div class="wrap">
   <a class="brand" href="index.html"><img src="img/icon.png" alt="">Tab Memory Manager</a>
   <h1>Privacy Policy</h1>
-  <p class="date">Last updated: 20 June 2026</p>
+  <p class="date">Last updated: 4 October 2026</p>
 
   <p>Tab Memory Manager is built to be private by design. This policy explains what the extension
   does and does not do with your information.</p>
@@ -40,9 +40,11 @@
   <h2>The short version</h2>
   <p><strong>Tab Memory Manager does not collect, transmit, sell, or share your tab or browsing
   data.</strong> Everything the extension does with your tabs happens locally, inside your own
-  browser — no accounts, no analytics, no tracking. The single exception is the optional Pro
-  waitlist: if you choose to enter your email and submit it, that email (and nothing else) is sent
-  to our form provider so we can notify you at launch. See "Pro waitlist" below.</p>
+  browser — no accounts, no analytics, no tracking. Every Pro feature (memory timeline, automation
+  rules, snapshots, weekly digest, settings sync) also runs and stores its data entirely on your
+  device. The only things ever sent off-device are, and only when you take the action yourself:
+  whatever you type if you submit the optional feedback form, and your license key if you activate
+  a Pro license. See below.</p>
 
   <h2>What the extension accesses</h2>
   <p>To do its job, the extension reads information about your <strong>currently open tabs</strong> —
@@ -63,7 +65,10 @@
     <li>your settings (e.g. cleanup thresholds, whitelisted domains, options);</li>
     <li>short-lived per-tab activity timestamps;</li>
     <li>a short "Recently cleaned" list so you can undo a cleanup;</li>
-    <li>aggregate lifetime stats (tabs cleaned, estimated memory freed).</li>
+    <li>aggregate lifetime stats (tabs cleaned, estimated memory freed);</li>
+    <li>(Pro) a rolling 30-day history of memory samples, for the memory timeline;</li>
+    <li>(Pro) saved session snapshots (tab titles and URLs you chose to save);</li>
+    <li>(Pro) your Pro license status, so the extension knows which features to unlock.</li>
   </ul>
   <p>This data never leaves your browser. It is not sent anywhere, and it is not accessible to us
   or any third party.</p>
@@ -76,15 +81,25 @@
     <li>No advertising or analytics identifiers.</li>
   </ul>
 
-  <h2>Pro waitlist (optional email signup)</h2>
-  <p>The Settings page includes an optional "Pro waitlist" form. If — and only if — you type your
-  email address and click "Notify me", that email address is sent to our form provider,
-  <strong>Formspree</strong> (formspree.io), so we can email you when Pro features launch. This is
-  the only information the extension ever sends off your device, and it never happens
-  automatically. We use your address solely to notify you about the Pro launch; it is not sold or
-  shared, and we don't send other marketing. If you never use the form, nothing is ever
-  transmitted. Formspree processes the submission on our behalf; see Formspree's own privacy
-  policy for how they handle form data.</p>
+  <h2>Feedback form (optional)</h2>
+  <p>The Settings page includes an optional "Support" form for bug reports and feedback. If — and
+  only if — you type a message and click "Send", that message (and your email address, if you
+  chose to include one for a reply) is sent to our form provider, <strong>Formspree</strong>
+  (formspree.io). This never happens automatically, and if you never use the form, nothing is ever
+  transmitted. We use it solely to read and respond to what you sent; it is not sold, shared, or
+  used for marketing. Formspree processes the submission on our behalf; see Formspree's own
+  privacy policy for how they handle form data.</p>
+
+  <h2>Pro license activation</h2>
+  <p>If you activate a Tab Memory Manager Pro license, the license key you enter is sent to our
+  payment processor, <strong>Lemon Squeezy</strong> (lemonsqueezy.com), solely to verify it and
+  unlock Pro features on your device. No tab, browsing, or usage data is included in that request.
+  If you never activate a license, nothing here is ever transmitted. See Lemon Squeezy's own
+  privacy policy for how they handle license data.</p>
+  <p>(Pro) <strong>Settings sync</strong>, if you turn it on, mirrors your settings (whitelist,
+  rules, thresholds) via your browser's own built-in sync storage (e.g. your Google or Firefox
+  account) so they follow you to your other devices — the same mechanism your browser already
+  uses to sync bookmarks. It is off by default.</p>
 
   <h2>Optional permissions</h2>
   <ul>

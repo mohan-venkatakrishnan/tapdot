@@ -5,7 +5,7 @@
 <script>!function(){var t=localStorage.getItem('tapdot-theme');t&&document.documentElement.setAttribute('data-theme',t)}()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tab Memory Manager — RAM Saver & Tab Hibernator for Chrome</title>
-<meta name="description" content="See estimated memory per tab, then hibernate, close, or group idle tabs in one click. Smart suggestions, undo safety net, 100% private — nothing leaves your device." />
+<meta name="description" content="See estimated memory per tab, then hibernate, close, or group idle tabs in one click. Smart suggestions, undo safety net, 100% private — nothing leaves your device. Pro adds automation, a memory timeline, snapshots, and sync." />
 <link rel="icon" href="img/icon.png" />
 <meta property="og:title" content="Tab Memory Manager — RAM Saver & Tab Hibernator" />
 <meta property="og:description" content="See exactly which tabs are eating your memory, then free it in one click. 100% private." />
@@ -174,6 +174,7 @@
     <a class="brand" href="#top"><img src="img/icon.png" alt="">Tab Memory Manager</a>
     <nav class="nav-links">
       <a class="minor" href="#features">Features</a>
+      <a class="minor" href="#pro">Pro</a>
       <a class="minor" href="#privacy">Privacy</a>
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
         <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -197,7 +198,7 @@
           <a class="btn primary" href="https://chromewebstore.google.com/detail/tab-memory-manager/minmahgdnlfeehhooofdkjbhlodbobmd" target="_blank" rel="noopener">Add to Chrome — Free</a>
           <a class="btn ghost" href="#features">See features</a>
         </div>
-        <p class="hero-note"><b>No accounts.</b> No servers. No tracking. Works on Chrome, Edge &amp; Firefox.</p>
+        <p class="hero-note"><b>No accounts.</b> No servers. No tracking. Works on Chrome, Edge &amp; Firefox. <a href="#pro">Pro</a> adds automation, a memory timeline, and more — still 100% local.</p>
       </div>
       <div class="stage">
         <div class="mb-header">
@@ -238,6 +239,24 @@
     </div>
   </section>
 
+  <!-- Pro -->
+  <section id="pro" class="wrap">
+    <h2 class="h2">Put cleanup on autopilot</h2>
+    <p class="sub">A one-time $4.99 license unlocks the automation layer — everything still runs and stays entirely on your device.</p>
+    <div class="feat-grid" id="pro-grid"></div>
+    <div class="shots" style="margin-top:20px">
+      <img src="img/pro-screenshot-1.png" alt="Memory timeline across 24h, 7d, and 30d" loading="lazy" data-lightbox />
+      <img src="img/pro-screenshot-2.png" alt="Automation: auto-hibernate rules and scheduled cleanups" loading="lazy" data-lightbox />
+    </div>
+    <div class="privacy-box" style="margin-top:40px">
+      <h2>Tab Memory Manager Pro — $4.99</h2>
+      <p>One-time purchase, one license key, your devices. Nothing but that key ever leaves your device to activate it.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn primary" href="https://tapdot.lemonsqueezy.com/checkout/buy/4ef8841d-0748-45a2-9d5c-19c200620297" target="_blank" rel="noopener">Get Tab Memory Manager Pro</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Privacy -->
   <section id="privacy" class="wrap">
     <div class="privacy-box">
@@ -259,6 +278,7 @@
     <span>© Tab Memory Manager &nbsp;·&nbsp; a <a href="../index.html">tapdot</a> product</span>
     <div class="foot-links">
       <a href="https://chromewebstore.google.com/detail/tab-memory-manager/minmahgdnlfeehhooofdkjbhlodbobmd" target="_blank" rel="noopener">Chrome Web Store</a>
+      <a href="https://tapdot.lemonsqueezy.com/checkout/buy/4ef8841d-0748-45a2-9d5c-19c200620297" target="_blank" rel="noopener">Get Pro</a>
       <a href="privacy.html">Privacy</a>
       <a href="mailto:ceo@tapdot.org">Contact</a>
       <a href="../index.html">← All extensions</a>
@@ -273,7 +293,13 @@ var ICONS = {
   star:  '<path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4 1.5-7.5L3 9l6.5-.5z"/>',
   group: '<rect x="3" y="5" width="7" height="6" rx="1.5"/><rect x="14" y="5" width="7" height="6" rx="1.5"/><rect x="8.5" y="13" width="7" height="6" rx="1.5"/>',
   undo:  '<path d="M9 14L4 9l5-5"/><path d="M4 9h10.5A5.5 5.5 0 0120 14.5 5.5 5.5 0 0114.5 20H11"/>',
-  lock:  '<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/>'
+  lock:  '<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/>',
+  timeline: '<path d="M3 3v18h18"/><path d="m6 15 4-5 3 3 5-7"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/>',
+  report: '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  sync: '<path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/>'
 };
 function svg(p, s) {
   return '<svg viewBox="0 0 24 24" fill="none" stroke="' + (s || 'currentColor') + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
@@ -286,12 +312,27 @@ var FEATURES = [
   [ICONS.undo, 'Undo safety net', 'Every cleanup is saved to a Recently Cleaned list — restore any tab with one click.'],
   [ICONS.lock, 'Private by design', 'No accounts, no servers, no analytics. Everything stays on your device, always.']
 ];
+var PRO_FEATURES = [
+  [ICONS.timeline, 'Memory timeline', 'See how memory use trends over 24h, 7 days, or 30 days — not just a snapshot.'],
+  [ICONS.clock, 'Auto-hibernate rules', 'Idle tabs hibernate themselves, hands-off. Set per-site rules too, like "always hibernate youtube.com."'],
+  [ICONS.calendar, 'Scheduled cleanups', 'A fresh start at a day and time you choose, automatically — or run one on demand.'],
+  [ICONS.save, 'Session snapshots', 'Save a window’s tabs as a named snapshot, restore it anytime.'],
+  [ICONS.report, 'Weekly digest', 'A "your week in review" card — tabs cleaned, memory freed, trend vs. last week.'],
+  [ICONS.sync, 'Settings sync', 'Your rules and preferences follow you across devices, via your browser’s own sync.']
+];
 var g = document.getElementById('feat-grid');
 FEATURES.forEach(function(f) {
   var d = document.createElement('div');
   d.className = 'feat-card';
   d.innerHTML = '<div class="ic">' + svg(f[0]) + '</div><h3>' + f[1] + '</h3><p>' + f[2] + '</p>';
   g.appendChild(d);
+});
+var gp = document.getElementById('pro-grid');
+PRO_FEATURES.forEach(function(f) {
+  var d = document.createElement('div');
+  d.className = 'feat-card';
+  d.innerHTML = '<div class="ic">' + svg(f[0]) + '</div><h3>' + f[1] + '</h3><p>' + f[2] + '</p>';
+  gp.appendChild(d);
 });
 (function(){var btn=document.getElementById('theme-toggle');var sun=document.getElementById('icon-sun');var moon=document.getElementById('icon-moon');var root=document.documentElement;function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme:dark)').matches;}function apply(dark){root.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('tapdot-theme',dark?'dark':'light');sun.style.display=dark?'block':'none';moon.style.display=dark?'none':'block';}apply(isDark());btn.addEventListener('click',function(){apply(!isDark());});})();
 </script>
